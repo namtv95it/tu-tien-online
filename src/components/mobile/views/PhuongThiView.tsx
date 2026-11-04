@@ -11,6 +11,7 @@ export const PhuongThiView: React.FC = () => {
   const buyFeaturedItem = useGameStore((state) => state.buyFeaturedItem);
   const setNotification = useGameStore((state) => state.setNotification);
   const openModal = useGameStore((state) => state.openModal);
+  const openStallModal = useGameStore((state) => state.openStallModal);
 
   const [selectedItemId, setSelectedItemId] = useState<string>('dan_truc_co');
 
@@ -53,7 +54,14 @@ export const PhuongThiView: React.FC = () => {
         className="absolute z-20 cursor-pointer hover:scale-105 active:scale-95 transition drop-shadow-md"
         title="Nhiệm Vụ Phường Thị"
       >
-        <img src={ASSETS.khung.nhiemVu} alt="Khung Nhiệm Vụ" className="w-full h-full object-contain" />
+        <img
+          src={ASSETS.khung.nhiemVu}
+          onError={(e) => {
+            e.currentTarget.src = ASSETS.ui.bangNhiemVu;
+          }}
+          alt="Khung Nhiệm Vụ"
+          className="w-full h-full object-contain filter drop-shadow"
+        />
       </div>
 
       {/* 3. Banner Sự Kiện từ assets/images/khung */}
@@ -63,40 +71,47 @@ export const PhuongThiView: React.FC = () => {
         className="absolute z-20 cursor-pointer hover:scale-105 active:scale-95 transition drop-shadow-md"
         title="Banner Sự Kiện"
       >
-        <img src={ASSETS.khung.bannerSuKien} alt="Banner Sự Kiện" className="w-full h-full object-contain" />
+        <img
+          src={ASSETS.khung.bannerSuKien}
+          onError={(e) => {
+            e.currentTarget.src = ASSETS.ui.bannerSuKien;
+          }}
+          alt="Banner Sự Kiện"
+          className="w-full h-full object-contain filter drop-shadow"
+        />
       </div>
 
       {/* 4. Interactive Market Stalls Hotspots (The shops are painted in the background) */}
       {/* Sạp Linh Thảo Các (Top Left) */}
       <div
-        onClick={() => handleSelectCategory('HERB', 'Linh Thảo Các')}
+        onClick={() => openStallModal('HERB')}
         style={{ left: L.shop_linh_thao.left, top: L.shop_linh_thao.top, width: L.shop_linh_thao.width, height: L.shop_linh_thao.height }}
         className="absolute z-20 cursor-pointer rounded-2xl hover:bg-emerald-400/20 active:scale-95 transition"
-        title="Linh Thảo Các"
+        title="Linh Thảo Các (Bấm để mở gian hàng)"
       />
 
       {/* Sạp Pháp Khí Đường (Top Right) */}
       <div
-        onClick={() => handleSelectCategory('WEAPON', 'Pháp Khí Đường')}
+        onClick={() => openStallModal('WEAPON')}
         style={{ left: L.shop_phap_khi.left, top: L.shop_phap_khi.top, width: L.shop_phap_khi.width, height: L.shop_phap_khi.height }}
         className="absolute z-20 cursor-pointer rounded-2xl hover:bg-cyan-400/20 active:scale-95 transition"
-        title="Pháp Khí Đường"
+        title="Pháp Khí Đường (Bấm để mở gian hàng)"
       />
 
       {/* Sạp Đan Dược Các (Bottom Left) */}
       <div
-        onClick={() => handleSelectCategory('PILL', 'Đan Dược Các')}
+        onClick={() => openStallModal('PILL')}
         style={{ left: L.shop_dan_duoc.left, top: L.shop_dan_duoc.top, width: L.shop_dan_duoc.width, height: L.shop_dan_duoc.height }}
         className="absolute z-20 cursor-pointer rounded-2xl hover:bg-amber-400/20 active:scale-95 transition"
-        title="Đan Dược Các"
+        title="Đan Dược Các (Bấm để mở gian hàng)"
       />
 
       {/* Sạp Công Pháp Phường (Bottom Right) */}
       <div
-        onClick={() => handleSelectCategory('MANUAL', 'Công Pháp Phường')}
+        onClick={() => openStallModal('MANUAL')}
         style={{ left: L.shop_cong_phap.left, top: L.shop_cong_phap.top, width: L.shop_cong_phap.width, height: L.shop_cong_phap.height }}
         className="absolute z-20 cursor-pointer rounded-2xl hover:bg-purple-400/20 active:scale-95 transition"
-        title="Công Pháp Phường"
+        title="Công Pháp Phường (Bấm để mở gian hàng)"
       />
 
       {/* 5. Khung Giao Dịch (Bottom Panel) */}
@@ -226,6 +241,17 @@ export const PhuongThiView: React.FC = () => {
           </button>
         ))}
       </div>
+
+      {/* Nút Xem Chi Tiết Cửa Hàng */}
+      <button
+        onClick={() => openStallModal(marketCategory)}
+        style={{ left: '68%', top: '68.2%' }}
+        className="absolute z-26 px-2 py-0.5 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-[9px] font-bold border border-amber-300 shadow-[0_0_8px_rgba(245,158,11,0.6)] active:scale-95 transition flex items-center gap-0.5"
+        title="Mở Bảng Mua Bán Toàn Diện Của Gian Hàng"
+      >
+        <span>Vào Gian Hàng</span>
+        <span>›</span>
+      </button>
 
       {/* Nút Mua */}
       <button

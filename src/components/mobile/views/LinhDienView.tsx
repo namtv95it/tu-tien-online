@@ -59,7 +59,14 @@ export const LinhDienView: React.FC = () => {
         className="absolute z-20 cursor-pointer hover:scale-105 active:scale-95 transition drop-shadow-md"
         title="Nhiệm Vụ Linh Điền"
       >
-        <img src={ASSETS.khung.nhiemVu} alt="Khung Nhiệm Vụ" className="w-full h-full object-contain" />
+        <img
+          src={ASSETS.khung.nhiemVu}
+          onError={(e) => {
+            e.currentTarget.src = ASSETS.ui.bangNhiemVu;
+          }}
+          alt="Khung Nhiệm Vụ"
+          className="w-full h-full object-contain filter drop-shadow"
+        />
       </div>
 
       {/* 3. Banner Sự Kiện (Under Mission Box) từ assets/images/khung */}
@@ -69,7 +76,14 @@ export const LinhDienView: React.FC = () => {
         className="absolute z-20 cursor-pointer hover:scale-105 active:scale-95 transition drop-shadow-md"
         title="Banner Sự Kiện"
       >
-        <img src={ASSETS.khung.bannerSuKien} alt="Banner Sự Kiện" className="w-full h-full object-contain" />
+        <img
+          src={ASSETS.khung.bannerSuKien}
+          onError={(e) => {
+            e.currentTarget.src = ASSETS.ui.bannerSuKien;
+          }}
+          alt="Banner Sự Kiện"
+          className="w-full h-full object-contain filter drop-shadow"
+        />
       </div>
 
       {/* 4. Interactive Garden Bed Hotspots (The herbs are already painted on the background) */}

@@ -8,6 +8,7 @@ import { DongPhuView } from './components/mobile/views/DongPhuView';
 import { LinhDienView } from './components/mobile/views/LinhDienView';
 import { LuyenDanView } from './components/mobile/views/LuyenDanView';
 import { PhuongThiView } from './components/mobile/views/PhuongThiView';
+import { XianxiaAtmosphere } from './components/mobile/art/XianxiaAtmosphere';
 import { useGameStore } from './store/gameStore';
 
 export const App: React.FC = () => {
@@ -48,6 +49,9 @@ export const App: React.FC = () => {
           {activeTab === 'luyen-dan' && <LuyenDanView />}
           {activeTab === 'linh-dien' && <LinhDienView />}
           {activeTab === 'phuong-thi' && <PhuongThiView />}
+
+          {/* Atmospheric Xianxia Particle & Ambient Animation Layer */}
+          <XianxiaAtmosphere tab={activeTab} />
         </main>
 
         {/* Top Header Floating Overlay */}

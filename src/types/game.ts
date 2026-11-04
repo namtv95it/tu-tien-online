@@ -103,4 +103,5 @@ export type ModalType =
   | 'KOI_POND'
   | 'MAIL'
   | 'ANNOUNCEMENTS'
-  | 'SETTINGS';
+  | 'SETTINGS'
+  | 'MARKET_STALL';

@@ -83,8 +83,10 @@ interface GameStore {
 
   // Phường Thị actions
   setMarketCategory: (cat: 'PILL' | 'HERB' | 'WEAPON' | 'MANUAL') => void;
+  openStallModal: (category: 'PILL' | 'HERB' | 'WEAPON' | 'MANUAL') => void;
   buyMarketItem: (item: MarketItem) => void;
   buyFeaturedItem: () => void;
+  sellItem: (id: string, count?: number) => void;
 
   // Kho Chứa / Inventory actions
   useItem: (id: string) => void;
@@ -101,6 +103,8 @@ interface GameStore {
   claimMail: (id: string) => void;
 
   // Settings
+  isBGMOn: boolean;
+  toggleBGM: () => void;
   toggleSound: () => void;
   resetGame: () => Promise<void>;
 
@@ -583,6 +587,15 @@ export const useGameStore = create<GameStore>((set, get) => ({
   marketCategory: 'PILL',
   allMarketItems: MARKET_CATALOG,
   featuredItem: MARKET_CATALOG[0],
+  isBGMOn: false,
+
+  openStallModal: (category) => {
+    soundManager.playClick();
+    set({
+      marketCategory: category,
+      activeModal: 'MARKET_STALL',
+    });
+  },
 
   openModal: (modal) => {
     soundManager.playClick();
@@ -953,6 +966,38 @@ export const useGameStore = create<GameStore>((set, get) => ({
     buyMarketItem(featuredItem);
   },
 
+  sellItem: (id, count = 1) => {
+    const { inventory, character, setNotification } = get();
+    const item = inventory.find((i) => i.id === id);
+    if (!item || item.count < count) return;
+
+    soundManager.playCoin();
+
+    // Selling price based on rarity
+    const priceMap: Record<string, number> = {
+      'Phàm': 80,
+      'Hạ': 150,
+      'Trung': 400,
+      'Thượng': 1500,
+      'Cực': 6000,
+    };
+    const unitPrice = priceMap[item.rarity] || 100;
+    const totalEarned = unitPrice * count;
+
+    const updatedInv = inventory
+      .map((i) => (i.id === id ? { ...i, count: i.count - count } : i))
+      .filter((i) => i.count > 0);
+
+    const updatedChar = {
+      ...character,
+      spiritStones: character.spiritStones + totalEarned,
+    };
+
+    set({ inventory: updatedInv, character: updatedChar });
+    db.character.put(updatedChar);
+    setNotification(`Bán ${count}x ${item.name}: Thu về +${totalEarned.toLocaleString()} Linh Thạch!`);
+  },
+
   // Kho Chứa / Use Item
   useItem: (id) => {
     const { inventory, character, setNotification } = get();
@@ -1085,6 +1130,12 @@ export const useGameStore = create<GameStore>((set, get) => ({
   },
 
   // Settings
+  toggleBGM: () => {
+    const isPlaying = soundManager.toggleBGM();
+    set({ isBGMOn: isPlaying });
+    get().setNotification(isPlaying ? 'Nhạc nền Cổ Phong: Đang phát 🎶' : 'Nhạc nền Cổ Phong: Đã tạm dừng ⏸️');
+  },
+
   toggleSound: () => {
     const { character, setNotification } = get();
     const nextVal = !character.soundEnabled;

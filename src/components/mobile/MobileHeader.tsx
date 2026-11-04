@@ -7,6 +7,8 @@ export const MobileHeader: React.FC = () => {
   const activeTab = useGameStore((state) => state.activeTab);
   const setNotification = useGameStore((state) => state.setNotification);
   const openModal = useGameStore((state) => state.openModal);
+  const isBGMOn = useGameStore((state) => state.isBGMOn);
+  const toggleBGM = useGameStore((state) => state.toggleBGM);
 
   const cultivationPercent = Math.min(
     100,
@@ -107,9 +109,20 @@ export const MobileHeader: React.FC = () => {
         </div>
       </div>
 
-      {/* Sub Header Action Icons (Mail, Notice, Settings) */}
+      {/* Sub Header Action Icons (Mail, Notice, Settings, BGM) */}
       {activeTab !== 'tu-luyen' && (
         <div className="flex justify-end gap-3 px-1 pt-1 text-[10px] text-amber-200/90 font-medium">
+          <div
+            onClick={toggleBGM}
+            className={`flex flex-col items-center cursor-pointer hover:scale-105 active:scale-95 transition ${
+              isBGMOn ? 'text-amber-300 drop-shadow-[0_0_8px_rgba(245,158,11,0.8)]' : 'text-slate-400 opacity-70'
+            }`}
+            title={isBGMOn ? 'Tắt Nhạc Nền Đàn Tranh' : 'Bật Nhạc Nền Đàn Tranh'}
+          >
+            <span className="text-base leading-none">🎵</span>
+            <span className="text-[9px] mt-0.5">{isBGMOn ? 'Nhạc: Bật' : 'Nhạc'}</span>
+          </div>
+
           <div
             onClick={() => openModal('MAIL')}
             className="relative flex flex-col items-center cursor-pointer hover:scale-105 active:scale-95 transition"

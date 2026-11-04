@@ -21,10 +21,20 @@ export const GameModals: React.FC = () => {
   const mailList = useGameStore((state) => state.mailList);
   const claimMail = useGameStore((state) => state.claimMail);
   const toggleSound = useGameStore((state) => state.toggleSound);
+  const isBGMOn = useGameStore((state) => state.isBGMOn);
+  const toggleBGM = useGameStore((state) => state.toggleBGM);
   const resetGame = useGameStore((state) => state.resetGame);
+
+  // Market Stall
+  const marketCategory = useGameStore((state) => state.marketCategory);
+  const setMarketCategory = useGameStore((state) => state.setMarketCategory);
+  const allMarketItems = useGameStore((state) => state.allMarketItems);
+  const buyMarketItem = useGameStore((state) => state.buyMarketItem);
+  const sellItem = useGameStore((state) => state.sellItem);
 
   const [invFilter, setInvFilter] = useState<'ALL' | ItemType>('ALL');
   const [selectedMailId, setSelectedMailId] = useState<string | null>(null);
+  const [stallTab, setStallTab] = useState<'BUY' | 'SELL'>('BUY');
 
   if (activeModal === 'NONE') return null;
 
@@ -47,6 +57,11 @@ export const GameModals: React.FC = () => {
               {activeModal === 'MAIL' && '✉️ Bồ Câu Đưa Thư'}
               {activeModal === 'ANNOUNCEMENTS' && '📢 Bảng Cáo Thị Tu Chân'}
               {activeModal === 'SETTINGS' && '⚙️ Thiết Lập Trò Chơi'}
+              {activeModal === 'MARKET_STALL' && (
+                marketCategory === 'HERB' ? '🌿 Linh Thảo Các' :
+                marketCategory === 'PILL' ? '🔮 Đan Dược Các' :
+                marketCategory === 'WEAPON' ? '⚔️ Pháp Khí Đường' : '📜 Công Pháp Phường'
+              )}
             </span>
           </div>
 
@@ -405,8 +420,8 @@ export const GameModals: React.FC = () => {
             <div className="space-y-3">
               <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-700 flex items-center justify-between">
                 <div>
-                  <h4 className="font-bold text-amber-100 text-xs">Âm Thanh Tiên Hiệp</h4>
-                  <p className="text-[10px] text-slate-400">Tiếng chuông thiền, tiếng nước tuyền và lửa luyện đan</p>
+                  <h4 className="font-bold text-amber-100 text-xs">Hiệu Ứng Âm Thanh (SFX)</h4>
+                  <p className="text-[10px] text-slate-400">Tiếng chuông thiền, tiếng suối tuyền và lửa luyện đan</p>
                 </div>
                 <button
                   onClick={toggleSound}
@@ -417,6 +432,23 @@ export const GameModals: React.FC = () => {
                   }`}
                 >
                   {character.soundEnabled ? 'BẬT' : 'TẮT'}
+                </button>
+              </div>
+
+              <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-700 flex items-center justify-between">
+                <div>
+                  <h4 className="font-bold text-amber-100 text-xs">Nhạc Nền Cổ Phong (BGM)</h4>
+                  <p className="text-[10px] text-slate-400">Giai điệu đàn tranh ngũ cung thanh tịnh, thiền định</p>
+                </div>
+                <button
+                  onClick={toggleBGM}
+                  className={`px-3 py-1 rounded-full text-xs font-bold transition ${
+                    isBGMOn
+                      ? 'bg-amber-400 text-slate-950'
+                      : 'bg-slate-800 text-slate-400 border border-slate-600'
+                  }`}
+                >
+                  {isBGMOn ? 'ĐANG PHÁT' : 'TẮT'}
                 </button>
               </div>
 
@@ -436,6 +468,177 @@ export const GameModals: React.FC = () => {
                   Luân Hồi
                 </button>
               </div>
+            </div>
+          )}
+
+          {/* ================= 10. MARKET STALL MODAL ================= */}
+          {activeModal === 'MARKET_STALL' && (
+            <div className="space-y-3">
+              {/* Category tabs selector */}
+              <div className="grid grid-cols-4 gap-1 p-1 bg-black/40 rounded-xl border border-amber-500/30">
+                {[
+                  { cat: 'HERB' as const, label: 'Linh Thảo', icon: '🌿' },
+                  { cat: 'PILL' as const, label: 'Đan Dược', icon: '🔮' },
+                  { cat: 'WEAPON' as const, label: 'Pháp Khí', icon: '⚔️' },
+                  { cat: 'MANUAL' as const, label: 'Công Pháp', icon: '📜' },
+                ].map((tab) => (
+                  <button
+                    key={tab.cat}
+                    onClick={() => setMarketCategory(tab.cat)}
+                    className={`py-1.5 rounded-lg text-[10px] font-bold flex flex-col items-center gap-0.5 transition ${
+                      marketCategory === tab.cat
+                        ? 'bg-amber-500/30 text-amber-300 border border-amber-400 shadow-[0_0_8px_rgba(245,158,11,0.5)]'
+                        : 'text-slate-400 hover:text-slate-200'
+                    }`}
+                  >
+                    <span>{tab.icon}</span>
+                    <span>{tab.label}</span>
+                  </button>
+                ))}
+              </div>
+
+              {/* Sub-tabs: Mua / Bán */}
+              <div className="flex items-center justify-between px-1">
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => setStallTab('BUY')}
+                    className={`px-3 py-1 rounded-lg text-xs font-bold transition ${
+                      stallTab === 'BUY'
+                        ? 'bg-amber-500 text-slate-950 shadow'
+                        : 'bg-slate-800 text-slate-400 hover:text-slate-200'
+                    }`}
+                  >
+                    🛒 Mua Vật Phẩm
+                  </button>
+                  <button
+                    onClick={() => setStallTab('SELL')}
+                    className={`px-3 py-1 rounded-lg text-xs font-bold transition ${
+                      stallTab === 'SELL'
+                        ? 'bg-amber-500 text-slate-950 shadow'
+                        : 'bg-slate-800 text-slate-400 hover:text-slate-200'
+                    }`}
+                  >
+                    💰 Bán Thu Linh Thạch
+                  </button>
+                </div>
+
+                <div className="text-[10px] text-amber-300 font-mono font-bold">
+                  💎 {character.spiritStones.toLocaleString()}
+                </div>
+              </div>
+
+              {/* BUY TAB */}
+              {stallTab === 'BUY' && (
+                <div className="space-y-2 max-h-[50vh] overflow-y-auto pr-1">
+                  {allMarketItems
+                    .filter((m) => m.category === marketCategory)
+                    .map((item) => (
+                      <div
+                        key={item.id}
+                        className="p-2.5 rounded-xl bg-slate-900/80 border border-amber-500/30 flex items-center justify-between gap-2 hover:border-amber-400/60 transition"
+                      >
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          <div className="w-10 h-10 rounded-lg bg-amber-950/60 border border-amber-600/40 flex items-center justify-center text-xl shrink-0">
+                            {item.icon}
+                          </div>
+                          <div className="min-w-0">
+                            <div className="flex items-center gap-1.5">
+                              <h4 className="font-bold text-amber-200 text-xs truncate">{item.name}</h4>
+                              <span className="text-[9px] px-1 py-0.2 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                                {item.rarity}
+                              </span>
+                            </div>
+                            <p className="text-[10px] text-slate-400 truncate">{item.description}</p>
+                            <div className="flex items-center gap-1.5 text-[10px]">
+                              <span className="text-emerald-400 font-bold font-mono">
+                                💎 {item.discountPrice.toLocaleString()}
+                              </span>
+                              {item.originalPrice > item.discountPrice && (
+                                <span className="line-through text-slate-500 text-[9px]">
+                                  {item.originalPrice.toLocaleString()}
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+
+                        <button
+                          onClick={() => buyMarketItem(item)}
+                          disabled={item.bought}
+                          className={`px-3 py-1.5 rounded-lg text-xs font-bold shrink-0 transition active:scale-95 ${
+                            item.bought
+                              ? 'bg-slate-800 text-slate-500 border border-slate-700 cursor-not-allowed'
+                              : 'bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 shadow-[0_0_8px_rgba(245,158,11,0.5)]'
+                          }`}
+                        >
+                          {item.bought ? 'Đã Mua' : 'Mua'}
+                        </button>
+                      </div>
+                    ))}
+                </div>
+              )}
+
+              {/* SELL TAB */}
+              {stallTab === 'SELL' && (
+                <div className="space-y-2 max-h-[50vh] overflow-y-auto pr-1">
+                  {inventory.filter((i) => i.type === marketCategory).length === 0 ? (
+                    <div className="text-center py-8 text-xs text-slate-400">
+                      Túi Trữ Vật không có vật phẩm thuộc danh mục này để bán!
+                    </div>
+                  ) : (
+                    inventory
+                      .filter((i) => i.type === marketCategory)
+                      .map((item) => {
+                        const priceMap: Record<string, number> = {
+                          'Phàm': 80,
+                          'Hạ': 150,
+                          'Trung': 400,
+                          'Thượng': 1500,
+                          'Cực': 6000,
+                        };
+                        const sellPrice = priceMap[item.rarity] || 100;
+                        return (
+                          <div
+                            key={item.id}
+                            className="p-2.5 rounded-xl bg-slate-900/80 border border-slate-700/60 flex items-center justify-between gap-2"
+                          >
+                            <div className="flex items-center gap-2.5 min-w-0">
+                              <div className="w-10 h-10 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-xl shrink-0">
+                                {item.icon}
+                              </div>
+                              <div className="min-w-0">
+                                <div className="flex items-center gap-1.5">
+                                  <h4 className="font-bold text-amber-200 text-xs truncate">{item.name}</h4>
+                                  <span className="text-[10px] text-amber-400 font-mono">x{item.count}</span>
+                                </div>
+                                <div className="text-[10px] text-emerald-400 font-mono">
+                                  Giá thu: 💎 +{sellPrice.toLocaleString()} / cái
+                                </div>
+                              </div>
+                            </div>
+
+                            <div className="flex items-center gap-1 shrink-0">
+                              <button
+                                onClick={() => sellItem(item.id, 1)}
+                                className="px-2 py-1 rounded bg-slate-800 hover:bg-amber-600/30 text-amber-300 border border-amber-500/40 text-[10px] font-bold active:scale-95 transition"
+                              >
+                                Bán x1
+                              </button>
+                              {item.count > 1 && (
+                                <button
+                                  onClick={() => sellItem(item.id, item.count)}
+                                  className="px-2 py-1 rounded bg-amber-600/20 hover:bg-amber-600/40 text-amber-200 border border-amber-500/60 text-[10px] font-bold active:scale-95 transition"
+                                >
+                                  Bán hết
+                                </button>
+                              )}
+                            </div>
+                          </div>
+                        );
+                      })
+                  )}
+                </div>
+              )}
             </div>
           )}
         </div>

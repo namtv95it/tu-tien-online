@@ -41,7 +41,7 @@ export const ASSETS = {
   // Khung viền UI (từ assets/images/khung)
   khung: {
     thongTinNhanVat: getAssetUrl('images/khung/01_khung_thong_tin_nhan_vat.png'),
-    nhiemVu: getAssetUrl('images/khung/02_khung_nhiem_vu_va_banner.png'),
+    nhiemVu: getAssetUrl('images/khung/02_khung_nhiem_vu.png'),
     bannerSuKien: getAssetUrl('images/khung/03_banner_su_kien.png'),
     thanhNgocBich: getAssetUrl('images/khung/04_thanh_ngoc_bich.png'),
     thanhLinhThach: getAssetUrl('images/khung/05_thanh_linh_thach.png'),

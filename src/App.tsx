@@ -20,7 +20,7 @@ export const App: React.FC = () => {
   useEffect(() => {
     initGame();
 
-    // 1-second game loop for realtime garden & cultivation progression
+    // 1-second loop for realtime garden & cultivation
     const interval = setInterval(() => {
       const now = Date.now();
       const delta = (now - lastTickTime.current) / 1000;
@@ -32,9 +32,15 @@ export const App: React.FC = () => {
   }, [initGame, tickGameLoop]);
 
   return (
-    <div className="w-full min-h-screen bg-[#04070c] flex justify-center text-slate-100 select-none antialiased">
-      {/* Mobile-First Portrait Frame (max-w-md) */}
-      <div className="w-full max-w-md min-h-screen bg-[#080d14] flex flex-col justify-between relative shadow-[0_0_50px_rgba(0,0,0,0.8)] border-x border-slate-900">
+    <div className="w-full min-h-screen bg-[#02050a] flex items-center justify-center text-slate-100 select-none antialiased relative overflow-hidden">
+      {/* Desktop Background Ambient Mist and Subtle Lights */}
+      <div className="hidden md:block absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-600/10 rounded-full blur-3xl animate-pulse-glow" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-600/10 rounded-full blur-3xl animate-pulse-glow" />
+      </div>
+
+      {/* Mobile-First Frame (max-w-md, rounded and framed on desktop) */}
+      <div className="w-full max-w-md min-h-screen md:min-h-[840px] md:max-h-[92vh] md:rounded-3xl bg-[#070d17] flex flex-col justify-between relative shadow-[0_0_60px_rgba(0,0,0,0.9)] md:border md:border-amber-500/40 overflow-hidden">
         {/* Top Header */}
         <MobileHeader />
 
@@ -42,7 +48,7 @@ export const App: React.FC = () => {
         <Scene2D />
 
         {/* Dynamic Tab Content Area */}
-        <main className="flex-1 px-3.5 py-3 overflow-y-auto">
+        <main className="flex-1 px-3 py-2.5 overflow-y-auto">
           {activeTab === 'cultivation' && <CultivationTab />}
           {activeTab === 'garden' && <GardenTab />}
           {activeTab === 'alchemy' && <AlchemyTab />}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useGameStore } from '../../../store/gameStore';
 import { ALCHEMY_RECIPES } from '../../../data/gameData';
+import { XianxiaFrame } from '../art/XianxiaFrame';
 import { Flame, Sparkles, CheckCircle2, AlertTriangle, ArrowRight } from 'lucide-react';
 
 export const AlchemyTab: React.FC = () => {
@@ -14,23 +15,20 @@ export const AlchemyTab: React.FC = () => {
 
   return (
     <div className="space-y-3 pb-20 animate-in fade-in duration-200">
-      {/* Cauldron Title banner */}
+      {/* Title */}
       <div className="flex justify-between items-center px-1">
-        <div>
-          <h3 className="font-bold text-sm text-yellow-300 flex items-center gap-1.5">
-            <Flame className="w-4 h-4 text-orange-400" />
-            Đan Phòng - Thần Nông Đan Lô
-          </h3>
-          <p className="text-[11px] text-slate-400">Luyện đan 3 pha: Khai Lô • Khống Hỏa • Ngưng Đan</p>
+        <div className="flex items-center gap-1.5 font-bold text-xs text-amber-300">
+          <Flame className="w-4 h-4 text-orange-400" />
+          Thần Nông Đan Lô
         </div>
-        <span className="text-xs text-yellow-400 font-mono bg-slate-800 px-2 py-0.5 rounded border border-slate-700">
-          Cấp {character.alchemyMastery.toFixed(1)}
+        <span className="text-[10px] text-amber-400 font-mono bg-slate-900 px-2 py-0.5 rounded border border-slate-800">
+          Đan Đạo Cấp {character.alchemyMastery.toFixed(1)}
         </span>
       </div>
 
-      {/* State A: Recipe selection */}
+      {/* State 1: Choose recipe */}
       {!alchemyBatch.active && (
-        <div className="space-y-2.5">
+        <div className="space-y-2">
           {ALCHEMY_RECIPES.map((recipe) => {
             const canLevel = character.alchemyMastery >= recipe.requiredMastery;
             const canCraft = recipe.ingredients.every((ing) => {
@@ -39,98 +37,99 @@ export const AlchemyTab: React.FC = () => {
             });
 
             return (
-              <div
-                key={recipe.id}
-                className={`bg-slate-900/90 border rounded-xl p-3 flex flex-col justify-between transition ${
-                  canCraft && canLevel
-                    ? 'border-slate-700 hover:border-yellow-500/60'
-                    : 'border-slate-800/80 opacity-70'
-                }`}
-              >
-                <div>
-                  <div className="flex justify-between items-center mb-1">
-                    <span className="font-bold text-xs text-yellow-200">{recipe.name}</span>
-                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-slate-800 text-slate-300">
-                      Cấp {recipe.requiredMastery}
-                    </span>
+              <XianxiaFrame key={recipe.id} className="p-3">
+                <div className="flex justify-between items-start mb-1.5">
+                  <div>
+                    <h4 className="font-bold text-xs text-amber-200 flex items-center gap-1.5">
+                      <span>💊</span> {recipe.name}
+                    </h4>
+                    <p className="text-[10px] text-slate-400 mt-0.5">{recipe.description}</p>
                   </div>
-                  <p className="text-[11px] text-slate-400 mb-2 leading-relaxed">{recipe.description}</p>
+                  <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-400 shrink-0">
+                    Cấp {recipe.requiredMastery}
+                  </span>
+                </div>
 
-                  {/* Ingredients needed */}
-                  <div className="bg-slate-950/70 p-2 rounded-lg border border-slate-800/80 text-[11px] space-y-1 mb-2.5">
-                    {recipe.ingredients.map((ing) => {
-                      const curQty = inventory.find((it) => it.defId === ing.defId)?.quantity || 0;
-                      const has = curQty >= ing.quantity;
-                      return (
-                        <div key={ing.defId} className="flex justify-between">
-                          <span className={has ? 'text-slate-300' : 'text-red-400'}>{ing.name}</span>
-                          <span className={has ? 'text-emerald-400 font-mono' : 'text-red-400 font-mono'}>
-                            {curQty}/{ing.quantity}
-                          </span>
-                        </div>
-                      );
-                    })}
-                  </div>
+                {/* Compact ingredient chips */}
+                <div className="flex flex-wrap gap-1.5 my-2">
+                  {recipe.ingredients.map((ing) => {
+                    const curQty = inventory.find((it) => it.defId === ing.defId)?.quantity || 0;
+                    const has = curQty >= ing.quantity;
+                    return (
+                      <span
+                        key={ing.defId}
+                        className={`text-[10px] px-2 py-0.5 rounded border font-mono ${
+                          has
+                            ? 'bg-slate-900 text-emerald-400 border-emerald-800'
+                            : 'bg-red-950/40 text-red-400 border-red-900'
+                        }`}
+                      >
+                        {ing.name} ({curQty}/{ing.quantity})
+                      </span>
+                    );
+                  })}
                 </div>
 
                 <button
                   disabled={!canCraft || !canLevel}
                   onClick={() => startAlchemyBatch(recipe.id)}
-                  className={`w-full py-2 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition ${
+                  className={`w-full py-2 rounded-lg text-xs font-bold transition flex items-center justify-center gap-1.5 ${
                     canCraft && canLevel
-                      ? 'bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 text-white shadow'
+                      ? 'bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 text-white shadow-md active:scale-95'
                       : 'bg-slate-800 text-slate-500 cursor-not-allowed'
                   }`}
                 >
                   <Flame className="w-3.5 h-3.5" />
                   {canLevel ? (canCraft ? 'Khai Lô Luyện Đan' : 'Thiếu Dược Liệu') : 'Chưa Đủ Cấp'}
                 </button>
-              </div>
+              </XianxiaFrame>
             );
           })}
         </div>
       )}
 
-      {/* State B: Active Batch Minigame */}
+      {/* State 2: Interactive Alchemy Cauldron Minigame */}
       {alchemyBatch.active && alchemyBatch.recipe && (
-        <div className="xianxia-panel rounded-xl p-4 border border-yellow-500/50 shadow-2xl">
-          {/* Header */}
-          <div className="flex justify-between items-center pb-2.5 border-b border-slate-800 mb-3">
-            <div>
-              <span className="text-[10px] text-orange-400 font-bold uppercase tracking-wider">ĐANG LUYỆN CHẾ</span>
-              <h4 className="text-sm font-bold text-yellow-200">{alchemyBatch.recipe.name}</h4>
+        <XianxiaFrame variant="gold" className="p-4 text-center">
+          {/* Cauldron Stage Illustration */}
+          <div className="relative w-28 h-28 mx-auto my-1 flex items-center justify-center">
+            {/* Spiritual Flame */}
+            <div className="absolute -bottom-2 text-3xl animate-flame">🔥</div>
+            {/* Bronze Cauldron Icon/Art */}
+            <div className="relative text-6xl filter drop-shadow-[0_4px_10px_rgba(245,158,11,0.5)]">
+              🏺
             </div>
-            <span className="text-[10px] px-2.5 py-0.5 rounded-full font-semibold bg-orange-500/20 text-orange-400 border border-orange-500/40">
-              {alchemyBatch.phase === 'HEATING' && 'Pha 2: Khống Hỏa'}
-              {alchemyBatch.phase === 'CONDENSATION' && 'Pha 3: Ngưng Đan'}
-              {alchemyBatch.phase === 'RESULT' && 'Xuất Lò'}
-            </span>
+            {alchemyBatch.phase === 'CONDENSATION' && (
+              <div className="absolute inset-0 flex items-center justify-center text-3xl animate-spin">
+                ☯️
+              </div>
+            )}
           </div>
 
-          {/* Phase 2: Heating */}
-          {alchemyBatch.phase === 'HEATING' && (
-            <div className="space-y-3.5">
-              <p className="text-xs text-slate-300">
-                Điều chỉnh ngọn lửa sao cho thanh nhiệt độ nằm trong vùng an toàn (Mục tiêu: {alchemyBatch.targetTemp}°C).
-              </p>
+          <div className="font-bold text-xs text-amber-200 mt-1">
+            Đang luyện: {alchemyBatch.recipe.name}
+          </div>
 
-              {/* Gauge */}
-              <div className="bg-slate-900 p-3 rounded-xl border border-slate-800 text-center">
-                <div className="flex justify-between text-[11px] text-slate-400 mb-1">
-                  <span>Nhiệt độ: <strong className="text-yellow-300 font-mono">{alchemyBatch.currentTemp}°C</strong></span>
-                  <span>Điểm hỏa hầu: <strong className="text-emerald-400 font-mono">{alchemyBatch.heatScore}/100</strong></span>
+          {/* Phase: Heating */}
+          {alchemyBatch.phase === 'HEATING' && (
+            <div className="space-y-3 mt-3">
+              {/* Temperature Gauge */}
+              <div className="bg-slate-950 p-3 rounded-xl border border-slate-800">
+                <div className="flex justify-between text-[11px] mb-1 font-mono">
+                  <span>Nhiệt độ: <strong className="text-amber-300">{alchemyBatch.currentTemp}°C</strong></span>
+                  <span>Mục tiêu: <strong className="text-emerald-400">{alchemyBatch.targetTemp}°C</strong></span>
                 </div>
 
-                <div className="relative w-full h-5 bg-slate-950 rounded-full overflow-hidden border border-slate-700">
+                <div className="relative w-full h-4 bg-slate-900 rounded-full overflow-hidden border border-slate-700">
                   {/* Safe Zone */}
                   <div
-                    className="absolute top-0 bottom-0 bg-emerald-500/30 border-x border-emerald-400"
+                    className="absolute top-0 bottom-0 bg-emerald-500/40 border-x border-emerald-400"
                     style={{
                       left: `${Math.max(0, alchemyBatch.targetTemp - alchemyBatch.recipe.fireTolerance)}%`,
                       width: `${alchemyBatch.recipe.fireTolerance * 2}%`,
                     }}
                   />
-                  {/* Heat bar */}
+                  {/* Fire Slider */}
                   <div
                     className="h-full bg-gradient-to-r from-orange-500 to-amber-400 transition-all duration-150"
                     style={{ width: `${alchemyBatch.currentTemp}%` }}
@@ -138,74 +137,69 @@ export const AlchemyTab: React.FC = () => {
                 </div>
               </div>
 
-              {/* Touch Buttons */}
-              <div className="flex gap-2.5">
+              {/* Fire Control Buttons */}
+              <div className="flex gap-2">
                 <button
                   onClick={() => adjustHeat(-6)}
-                  className="flex-1 py-3 bg-slate-800 hover:bg-slate-700 text-cyan-300 font-bold text-xs rounded-xl transition border border-cyan-800 active:scale-95"
+                  className="flex-1 py-2.5 bg-slate-900 hover:bg-slate-800 text-cyan-300 font-bold text-xs rounded-xl border border-cyan-800 active:scale-95 transition"
                 >
-                  ❄️ Giảm Lửa (-6°C)
+                  ❄️ Giảm Lửa (-6°)
                 </button>
                 <button
                   onClick={() => adjustHeat(6)}
-                  className="flex-1 py-3 bg-slate-800 hover:bg-slate-700 text-orange-400 font-bold text-xs rounded-xl transition border border-orange-800 active:scale-95"
+                  className="flex-1 py-2.5 bg-slate-900 hover:bg-slate-800 text-orange-400 font-bold text-xs rounded-xl border border-orange-800 active:scale-95 transition"
                 >
-                  🔥 Thúc Hỏa (+6°C)
+                  🔥 Thúc Hỏa (+6°)
                 </button>
               </div>
 
               <button
                 onClick={advanceAlchemyPhase}
-                className="w-full py-2.5 bg-gradient-to-r from-yellow-600 to-amber-500 hover:from-yellow-500 text-slate-950 font-bold text-xs rounded-xl transition shadow flex items-center justify-center gap-1.5"
+                className="w-full py-2 bg-gradient-to-r from-amber-600 to-yellow-500 hover:from-amber-500 text-slate-950 font-bold text-xs rounded-xl transition shadow flex items-center justify-center gap-1.5"
               >
-                <ArrowRight className="w-4 h-4" /> Dược Lực Đã Hòa - Tiến Vào Ngưng Đan
+                <ArrowRight className="w-3.5 h-3.5" /> Dược Lực Đã Hòa - Ngưng Đan
               </button>
             </div>
           )}
 
-          {/* Phase 3: Condensation */}
+          {/* Phase: Condensation */}
           {alchemyBatch.phase === 'CONDENSATION' && (
-            <div className="space-y-3.5 text-center py-2">
-              <div className="text-4xl animate-spin">☯️</div>
-              <h5 className="font-bold text-sm text-cyan-300">Linh Khí Đang Hội Tụ</h5>
-              <p className="text-xs text-slate-400 max-w-xs mx-auto">
-                Điểm hỏa hầu đạt {alchemyBatch.heatScore} điểm. Bấm nút dưới để ngưng tụ thành đan hoàn!
-              </p>
+            <div className="space-y-3 mt-3">
+              <p className="text-xs text-cyan-300 font-medium">Linh khí ngưng tụ, chạm để đúc đan hoàn!</p>
               <button
                 onClick={advanceAlchemyPhase}
-                className="w-full py-3 bg-gradient-to-r from-cyan-600 to-emerald-500 text-white font-bold text-xs rounded-xl transition shadow-lg animate-bounce flex items-center justify-center gap-1.5"
+                className="w-full py-3 bg-gradient-to-r from-cyan-600 to-emerald-500 text-white font-black text-xs rounded-xl transition shadow-lg animate-bounce flex items-center justify-center gap-1.5 tracking-wider"
               >
-                <Sparkles className="w-4 h-4" /> KHAI LÔ THU ĐAN!
+                <Sparkles className="w-4 h-4" /> XUẤT LÒ THU ĐAN!
               </button>
             </div>
           )}
 
-          {/* Result Phase */}
+          {/* Phase: Result */}
           {alchemyBatch.phase === 'RESULT' && (
-            <div className="space-y-3 text-center py-2">
+            <div className="space-y-2.5 mt-3">
               {alchemyBatch.resultQuality === 'HỎNG MẺ' ? (
-                <div className="bg-red-950/60 p-3.5 rounded-xl border border-red-800 text-red-300">
-                  <AlertTriangle className="w-7 h-7 mx-auto text-red-400 mb-1" />
-                  <h5 className="font-bold text-xs">Mẻ Đan Bị Hỏng!</h5>
-                  <p className="text-[11px] text-red-200/80 mt-0.5">Dược liệu hóa thành tro tàn do sai lệch nhiệt.</p>
+                <div className="p-3 rounded-xl bg-red-950/60 border border-red-800 text-red-300 text-xs">
+                  <AlertTriangle className="w-6 h-6 mx-auto mb-1 text-red-400" />
+                  <strong>Luyện đan thất bại!</strong> Dược liệu hóa thành tro tàn.
                 </div>
               ) : (
-                <div className="bg-emerald-950/60 p-3.5 rounded-xl border border-emerald-600 text-emerald-200">
-                  <CheckCircle2 className="w-7 h-7 mx-auto text-emerald-400 mb-1" />
-                  <h5 className="font-bold text-sm text-yellow-300">{alchemyBatch.resultPillName}</h5>
-                  <p className="text-[11px] text-emerald-300/90 mt-0.5">Đan hoàn đã được chuyển vào Túi Trữ Vật!</p>
+                <div className="p-3 rounded-xl bg-emerald-950/60 border border-emerald-600 text-emerald-200 text-xs">
+                  <CheckCircle2 className="w-6 h-6 mx-auto mb-1 text-emerald-400" />
+                  <strong className="text-sm text-amber-300 block">{alchemyBatch.resultPillName}</strong>
+                  Đã chuyển vào Túi Trữ Vật!
                 </div>
               )}
 
               <button
                 onClick={cancelAlchemy}
-                className="w-full py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-xl transition"
+                className="w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold rounded-xl transition"
               >
                 Luyện Mẻ Tiếp Theo
               </button>
             </div>
           )}
-        </div>
+        </XianxiaFrame>
       )}
     </div>
   );

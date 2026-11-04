@@ -16,3 +16,4 @@ export const NotificationToast: React.FC = () => {
     </div>
   );
 };
+

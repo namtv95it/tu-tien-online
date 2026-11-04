@@ -1,6 +1,7 @@
 import React from 'react';
 import { useGameStore } from '../../../store/gameStore';
-import { Sparkles, Moon, Activity, Heart, Shield, Compass } from 'lucide-react';
+import { XianxiaFrame } from '../art/XianxiaFrame';
+import { Shield, Heart, Compass, Activity, Scroll } from 'lucide-react';
 
 export const CultivationTab: React.FC = () => {
   const character = useGameStore((state) => state.character);
@@ -16,118 +17,124 @@ export const CultivationTab: React.FC = () => {
   };
 
   return (
-    <div className="space-y-3.5 pb-20 animate-in fade-in duration-200">
-      {/* Primary Meditation Action Card */}
-      <div className="xianxia-panel rounded-xl p-4 border border-yellow-500/40 text-center relative overflow-hidden">
-        <div className="text-xs text-yellow-400 font-semibold uppercase tracking-wider mb-1 flex items-center justify-center gap-1.5">
-          <Sparkles className="w-4 h-4 text-yellow-400" />
-          Hành Động Tu Luyện Chủ Động
-        </div>
-        <p className="text-xs text-slate-300 mb-3.5 leading-relaxed">
-          Tọa thiền hấp thu linh khí thiên địa. Khi bận việc có thể đóng trình duyệt, hệ thống tự động bế quan ngoại tuyến.
-        </p>
-
-        {/* Large Tap Button */}
-        <button
-          onClick={toggleMeditation}
-          className={`w-full py-3.5 px-4 rounded-xl font-bold text-sm tracking-wide transition shadow-lg flex items-center justify-center gap-2 border ${
-            character.isMeditating
-              ? 'bg-gradient-to-r from-cyan-700 to-blue-700 hover:from-cyan-600 hover:to-blue-600 border-cyan-400 text-white animate-pulse'
-              : 'bg-gradient-to-r from-yellow-600 to-amber-600 hover:from-yellow-500 hover:to-amber-500 border-yellow-400 text-slate-950'
-          }`}
-        >
-          <span className="text-lg">🧘</span>
-          {character.isMeditating ? 'THU CÔNG XUẤT ĐỊNH' : 'NHẬP ĐỊNH TỌA THIỀN'}
-        </button>
-      </div>
-
-      {/* Breakthrough banner if ready */}
+    <div className="space-y-3 pb-20 animate-in fade-in duration-200">
+      {/* 1. Breakthrough Ready Alert */}
       {canBreakthrough && (
-        <div className="p-3.5 rounded-xl bg-gradient-to-r from-yellow-950/80 to-amber-950/80 border border-yellow-400 shadow-xl text-center animate-pulse">
-          <h4 className="font-bold text-sm text-yellow-300 flex items-center justify-center gap-1.5">
-            ⚡ TU VI ĐÃ VIÊN MÃN - THIÊN KIẾP GIÁNG LÂM ⚡
-          </h4>
-          <p className="text-xs text-slate-300 my-1.5">
-            Kinh mạch và tâm cảnh đã sẵn sàng, hãy vận khí phá vỡ bình cảnh!
-          </p>
+        <div className="p-3 rounded-xl bg-gradient-to-r from-amber-600 to-yellow-500 text-slate-950 font-black text-center shadow-lg border border-amber-300 animate-pulse">
+          <div className="text-xs tracking-wider">⚡ THIÊN KIẾP ĐÃ ĐẾN ⚡</div>
           <button
             onClick={handleBreakthrough}
-            className="w-full py-2 bg-gradient-to-r from-yellow-500 to-amber-400 hover:from-yellow-400 text-slate-950 font-extrabold text-xs rounded-lg transition shadow"
+            className="w-full mt-1.5 py-1.5 bg-slate-950 text-amber-300 rounded-lg text-xs font-bold hover:bg-slate-900 transition"
           >
-            ĐỘT PHÁ CẢNH GIỚI TIẾP THEO
+            ĐỘT PHÁ CẢNH GIỚI NGAY
           </button>
         </div>
       )}
 
-      {/* 4 Attributes Overview Grid */}
-      <div className="grid grid-cols-2 gap-2.5">
-        {/* Kinh mạch */}
-        <div className="bg-slate-900/80 border border-slate-700/80 rounded-xl p-3">
-          <div className="flex items-center justify-between text-xs mb-1">
-            <span className="text-slate-300 font-medium flex items-center gap-1">
-              <Shield className="w-3.5 h-3.5 text-blue-400" /> Kinh Mạch
-            </span>
-            <span className="font-mono text-blue-300 font-bold">{character.meridianStability}/100</span>
+      {/* 2. Primary Cultivation Controls */}
+      <XianxiaFrame variant="gold">
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center gap-2">
+            <span className="text-xl">🧘</span>
+            <div>
+              <h3 className="font-bold text-xs text-amber-300">
+                {character.isMeditating ? 'Đang Tọa Thiền Tụ Khí' : 'Đang Tĩnh Chỉ'}
+              </h3>
+              <p className="text-[10px] text-slate-400">
+                Tốc độ: <span className="text-emerald-400 font-mono font-bold">+0.8 Tu vi/s</span>
+              </p>
+            </div>
           </div>
-          <div className="w-full h-1.5 bg-slate-950 rounded-full overflow-hidden">
-            <div className="h-full bg-blue-500" style={{ width: `${character.meridianStability}%` }} />
-          </div>
-          <p className="text-[10px] text-slate-400 mt-1.5">Giảm rủi ro tẩu hỏa nhập ma</p>
+
+          <button
+            onClick={toggleMeditation}
+            className={`px-4 py-2 rounded-xl text-xs font-bold border transition shadow-md active:scale-95 ${
+              character.isMeditating
+                ? 'bg-cyan-950/90 border-cyan-400 text-cyan-300 hover:bg-cyan-900'
+                : 'bg-amber-500 hover:bg-amber-400 border-amber-300 text-slate-950'
+            }`}
+          >
+            {character.isMeditating ? 'Thu Công' : 'Nhập Định'}
+          </button>
         </div>
 
-        {/* Tâm cảnh */}
-        <div className="bg-slate-900/80 border border-slate-700/80 rounded-xl p-3">
-          <div className="flex items-center justify-between text-xs mb-1">
-            <span className="text-slate-300 font-medium flex items-center gap-1">
-              <Heart className="w-3.5 h-3.5 text-rose-400" /> Tâm Cảnh
-            </span>
-            <span className="font-mono text-rose-300 font-bold">{character.mindState}/100</span>
+        {/* Compact 4 Visual Stat Gems */}
+        <div className="grid grid-cols-4 gap-1.5 pt-2 border-t border-amber-500/20 text-center">
+          {/* Kinh Mạch */}
+          <div className="bg-slate-950/70 p-2 rounded-lg border border-slate-800">
+            <Shield className="w-3.5 h-3.5 mx-auto text-blue-400 mb-0.5" />
+            <div className="text-[10px] text-slate-400">Kinh Mạch</div>
+            <div className="font-mono text-xs font-bold text-blue-300">{character.meridianStability}%</div>
           </div>
-          <div className="w-full h-1.5 bg-slate-950 rounded-full overflow-hidden">
-            <div className="h-full bg-rose-500" style={{ width: `${character.mindState}%` }} />
+
+          {/* Tâm Cảnh */}
+          <div className="bg-slate-950/70 p-2 rounded-lg border border-slate-800">
+            <Heart className="w-3.5 h-3.5 mx-auto text-rose-400 mb-0.5" />
+            <div className="text-[10px] text-slate-400">Tâm Cảnh</div>
+            <div className="font-mono text-xs font-bold text-rose-300">{character.mindState}%</div>
           </div>
-          <p className="text-[10px] text-slate-400 mt-1.5">Tâm hồn thanh tịnh, vô tạp niệm</p>
+
+          {/* Thần Thức */}
+          <div className="bg-slate-950/70 p-2 rounded-lg border border-slate-800">
+            <Compass className="w-3.5 h-3.5 mx-auto text-cyan-400 mb-0.5" />
+            <div className="text-[10px] text-slate-400">Thần Thức</div>
+            <div className="font-mono text-xs font-bold text-cyan-300">{character.spiritSense}</div>
+          </div>
+
+          {/* Mệt Mỏi */}
+          <div className="bg-slate-950/70 p-2 rounded-lg border border-slate-800">
+            <Activity className="w-3.5 h-3.5 mx-auto text-amber-400 mb-0.5" />
+            <div className="text-[10px] text-slate-400">Mệt Mỏi</div>
+            <div className="font-mono text-xs font-bold text-amber-300">{character.fatigue}%</div>
+          </div>
+        </div>
+      </XianxiaFrame>
+
+      {/* 3. Công Pháp Tu Luyện (Cultivation Techniques) */}
+      <XianxiaFrame>
+        <div className="flex items-center justify-between mb-2">
+          <div className="flex items-center gap-1.5 text-xs font-bold text-amber-300">
+            <Scroll className="w-3.5 h-3.5 text-amber-400" />
+            Công Pháp Chủ Tu
+          </div>
+          <span className="text-[10px] text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800 font-mono">
+            Đang Vận Hành
+          </span>
         </div>
 
-        {/* Thần thức */}
-        <div className="bg-slate-900/80 border border-slate-700/80 rounded-xl p-3">
-          <div className="flex items-center justify-between text-xs mb-1">
-            <span className="text-slate-300 font-medium flex items-center gap-1">
-              <Compass className="w-3.5 h-3.5 text-cyan-400" /> Thần Thức
-            </span>
-            <span className="font-mono text-cyan-300 font-bold">{character.spiritSense}</span>
+        <div className="space-y-2">
+          {/* Method 1 */}
+          <div className="p-2.5 rounded-lg bg-slate-950/70 border border-emerald-500/50 flex items-center justify-between">
+            <div className="flex items-center gap-2.5">
+              <span className="text-xl">🎋</span>
+              <div>
+                <div className="font-bold text-xs text-emerald-300">Thanh Mộc Dẫn Khí Quyết</div>
+                <div className="text-[10px] text-slate-400">+8% tốc độ hấp thu linh khí khi ở động phủ</div>
+              </div>
+            </div>
+            <span className="text-[10px] font-bold text-emerald-400">Thuần Thục</span>
           </div>
-          <p className="text-[10px] text-slate-400 mt-1">Cảm nhận thiên địa, điều khiển pháp bảo</p>
-        </div>
 
-        {/* Mệt mỏi */}
-        <div className="bg-slate-900/80 border border-slate-700/80 rounded-xl p-3">
-          <div className="flex items-center justify-between text-xs mb-1">
-            <span className="text-slate-300 font-medium flex items-center gap-1">
-              <Activity className="w-3.5 h-3.5 text-amber-400" /> Mệt Mỏi
-            </span>
-            <span className="font-mono text-amber-300 font-bold">{character.fatigue}%</span>
+          {/* Method 2 */}
+          <div className="p-2.5 rounded-lg bg-slate-950/40 border border-slate-800/80 flex items-center justify-between opacity-75">
+            <div className="flex items-center gap-2.5">
+              <span className="text-xl">🌊</span>
+              <div>
+                <div className="font-bold text-xs text-slate-300">Tĩnh Thủy Quy Tức Công</div>
+                <div className="text-[10px] text-slate-500">+12% ổn định kinh mạch khi bế quan</div>
+              </div>
+            </div>
+            <span className="text-[10px] text-slate-500">Nhập Môn</span>
           </div>
-          <div className="w-full h-1.5 bg-slate-950 rounded-full overflow-hidden">
-            <div className="h-full bg-amber-500" style={{ width: `${character.fatigue}%` }} />
-          </div>
-          <p className="text-[10px] text-slate-400 mt-1.5">Tự động hồi phục khi nghỉ ngơi</p>
         </div>
-      </div>
+      </XianxiaFrame>
 
-      {/* Bế Quan Ngoại Tuyến */}
-      <div className="bg-slate-900/90 border border-yellow-700/40 rounded-xl p-3.5">
-        <h4 className="text-xs font-bold text-yellow-300 flex items-center gap-1.5 mb-1.5">
-          <Moon className="w-4 h-4 text-cyan-400" />
-          Cơ Chế Bế Quan Ngoại Tuyến (Lazy Settlement)
-        </h4>
-        <p className="text-xs text-slate-300 leading-relaxed">
-          Đạo hữu có thể tắt trình duyệt bất cứ lúc nào. Khi quay trở lại, hệ thống sẽ tự động đối chiếu thời gian và trả tu vi tích lũy (tối đa <strong>8 giờ/ngày</strong> theo chuẩn GDD).
-        </p>
-        <div className="mt-2.5 pt-2 border-t border-slate-800 flex justify-between text-[11px] text-slate-400">
-          <span>Hiệu suất bế quan: <strong className="text-emerald-400">{character.abodeTier >= 2 ? '120%' : '100%'}</strong></span>
-          <span>Trần bế quan: <strong>8 Giờ</strong></span>
-        </div>
+      {/* 4. Sleek Offline Status Pill */}
+      <div className="flex items-center justify-between px-3 py-2 rounded-xl bg-slate-900/80 border border-slate-800 text-[11px] text-slate-400">
+        <span className="flex items-center gap-1.5 text-cyan-300">
+          🌙 Bế quan ngoại tuyến tự động
+        </span>
+        <span className="font-mono text-amber-400 font-semibold">Tối đa 8h/ngày</span>
       </div>
     </div>
   );

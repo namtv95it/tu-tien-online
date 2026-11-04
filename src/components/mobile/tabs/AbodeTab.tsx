@@ -1,6 +1,7 @@
 import React from 'react';
 import { useGameStore } from '../../../store/gameStore';
-import { Sparkles, ArrowUpCircle } from 'lucide-react';
+import { XianxiaFrame } from '../art/XianxiaFrame';
+import { ArrowUpCircle } from 'lucide-react';
 
 export const AbodeTab: React.FC = () => {
   const character = useGameStore((state) => state.character);
@@ -23,86 +24,73 @@ export const AbodeTab: React.FC = () => {
 
   return (
     <div className="space-y-3 pb-20 animate-in fade-in duration-200">
-      {/* Abode Tier Overview Card */}
-      <div className="xianxia-panel rounded-xl p-4 border border-yellow-500/50 shadow-md">
+      {/* Abode Tier Card */}
+      <XianxiaFrame variant="gold" className="p-3.5">
         <div className="flex justify-between items-center mb-2">
-          <div>
-            <span className="text-[10px] text-yellow-400 font-bold uppercase tracking-wider">CẢNH GIỚI ĐỘNG PHỦ</span>
-            <h3 className="font-bold text-base text-yellow-200">{currentTier.name}</h3>
+          <div className="flex items-center gap-2">
+            <span className="text-2xl">🏯</span>
+            <div>
+              <h3 className="font-bold text-xs text-amber-200">{currentTier.name}</h3>
+              <span className="text-[10px] text-emerald-400 font-mono">
+                Cấp {character.abodeTier}/3 • Mở rộng {character.abodeTier >= 2 ? '6' : '4'} ô điền
+              </span>
+            </div>
           </div>
-          <span className="text-xs px-2.5 py-1 rounded bg-yellow-500/20 text-yellow-300 border border-yellow-500/40 font-mono">
-            Cấp {character.abodeTier}/3
-          </span>
+
+          {character.abodeTier < 3 ? (
+            <button
+              onClick={upgradeAbodeTier}
+              className="py-1.5 px-3 bg-gradient-to-r from-amber-600 to-yellow-500 hover:from-amber-500 text-slate-950 font-bold text-xs rounded-lg transition shadow flex items-center gap-1 active:scale-95"
+            >
+              <ArrowUpCircle className="w-3.5 h-3.5" />
+              Nâng ({currentTier.nextCost} 💎)
+            </button>
+          ) : (
+            <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800">
+              Viên Mãn
+            </span>
+          )}
         </div>
-
-        <p className="text-xs text-slate-300 leading-relaxed mb-3">
-          Nâng cấp động phủ giúp tăng thêm ô đất linh điền, tăng dung lượng linh lực tối đa và mở rộng hiệu suất bế quan ngoại tuyến.
-        </p>
-
-        {character.abodeTier < 3 ? (
-          <button
-            onClick={upgradeAbodeTier}
-            className="w-full py-2.5 bg-gradient-to-r from-yellow-600 to-amber-500 hover:from-yellow-500 text-slate-950 font-bold text-xs rounded-xl transition shadow flex items-center justify-center gap-1.5"
-          >
-            <ArrowUpCircle className="w-4 h-4" />
-            Thăng Cấp Lên {currentTier.nextName} ({currentTier.nextCost} 💎)
-          </button>
-        ) : (
-          <div className="py-2 text-center text-xs text-emerald-400 font-semibold bg-emerald-950/40 rounded-lg border border-emerald-800">
-            ✨ Động Phủ đã đạt cảnh giới tối cao!
-          </div>
-        )}
-      </div>
+      </XianxiaFrame>
 
       {/* Facilities List */}
-      <div>
-        <h4 className="text-xs font-bold text-yellow-300 px-1 mb-2 flex items-center gap-1.5">
-          <Sparkles className="w-3.5 h-3.5 text-yellow-400" />
-          Kiến Thiết Công Trình & Hiệu Ứng Phúc Lợi
-        </h4>
-
-        <div className="space-y-2">
-          {facilities.map((fac) => (
-            <div
-              key={fac.id}
-              className={`p-3 rounded-xl border flex items-center justify-between transition ${
-                fac.built
-                  ? 'bg-slate-900/90 border-emerald-600/50 shadow-[0_0_8px_rgba(52,211,153,0.1)]'
-                  : 'bg-slate-900/60 border-slate-700/70'
-              }`}
-            >
-              <div className="flex items-center gap-3">
-                <span className="text-2xl">{fac.icon}</span>
-                <div>
-                  <div className="flex items-center gap-1.5">
-                    <span className="font-semibold text-xs text-yellow-200">{fac.name}</span>
-                    {fac.built && (
-                      <span className="text-[10px] px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
-                        Đã xây
-                      </span>
-                    )}
-                  </div>
-                  <div className="text-[11px] text-emerald-400 font-medium">{fac.buffDescription}</div>
-                  <div className="text-[10px] text-slate-400 line-clamp-1">{fac.description}</div>
+      <div className="space-y-2">
+        {facilities.map((fac) => (
+          <XianxiaFrame
+            key={fac.id}
+            variant={fac.built ? 'cyan' : 'default'}
+            className="p-3 flex items-center justify-between"
+          >
+            <div className="flex items-center gap-2.5">
+              <span className="text-2xl">{fac.icon}</span>
+              <div>
+                <div className="flex items-center gap-1.5">
+                  <span className="font-bold text-xs text-amber-200">{fac.name}</span>
+                  {fac.built && (
+                    <span className="text-[9px] px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
+                      Đã xây
+                    </span>
+                  )}
                 </div>
+                <div className="text-[10px] text-emerald-400 font-medium">{fac.buffDescription}</div>
               </div>
-
-              {!fac.built && (
-                <button
-                  onClick={() => buildFacility(fac.id)}
-                  disabled={character.coins < fac.cost}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition ${
-                    character.coins >= fac.cost
-                      ? 'bg-yellow-600/80 hover:bg-yellow-500 text-slate-950 shadow'
-                      : 'bg-slate-800 text-slate-500 cursor-not-allowed'
-                  }`}
-                >
-                  Xây ({fac.cost} 💎)
-                </button>
-              )}
             </div>
-          ))}
-        </div>
+
+            {!fac.built && (
+              <button
+                onClick={() => buildFacility(fac.id)}
+                disabled={character.coins < fac.cost}
+                className={`px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition active:scale-95 ${
+                  character.coins >= fac.cost
+                    ? 'bg-amber-500 hover:bg-amber-400 text-slate-950 shadow'
+                    : 'bg-slate-800 text-slate-500 cursor-not-allowed'
+                }`}
+              >
+                {fac.cost} 💎
+              </button>
+            )}
+          </XianxiaFrame>
+        ))}
       </div>
     </div>
   );

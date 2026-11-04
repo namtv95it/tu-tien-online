@@ -4,8 +4,7 @@ import { ASSETS } from '../../../utils/assets';
 
 export const DongPhuView: React.FC = () => {
   const setActiveTab = useGameStore((state) => state.setActiveTab);
-  const setNotification = useGameStore((state) => state.setNotification);
-  const character = useGameStore((state) => state.character);
+  const openModal = useGameStore((state) => state.openModal);
 
   return (
     <div className="absolute inset-0 w-full h-full select-none text-slate-100 overflow-hidden">
@@ -16,24 +15,24 @@ export const DongPhuView: React.FC = () => {
         className="absolute inset-0 w-full h-full object-cover object-top pointer-events-none"
       />
 
-      {/* 2. Khung Nhiệm Vụ (Top-Left) */}
+      {/* 2. Khung Nhiệm Vụ (Top-Left) từ assets/images/khung */}
       <div
-        onClick={() => setNotification(`Nhiệm vụ chính: Tu luyện đến Luyện Khí tầng 3 (Hiện tại: tầng ${character.realmLevel})`)}
+        onClick={() => openModal('QUESTS')}
         style={{ left: '0.85%', top: '9.45%', width: '32.09%', height: '14.23%' }}
         className="absolute z-20 cursor-pointer hover:scale-105 active:scale-95 transition drop-shadow-md"
-        title="Nhiệm Vụ Động Phủ"
+        title="Mở Nhiệm Vụ Tông Môn"
       >
-        <img src={ASSETS.ui.bangNhiemVu} alt="Bảng Nhiệm Vụ" className="w-full h-full object-contain" />
+        <img src={ASSETS.khung.nhiemVu} alt="Khung Nhiệm Vụ" className="w-full h-full object-contain" />
       </div>
 
-      {/* 3. Banner Sự Kiện (Under Mission Box) */}
+      {/* 3. Banner Sự Kiện (Under Mission Box) từ assets/images/khung */}
       <div
-        onClick={() => setNotification('Sự kiện: Thất Tịch Thưởng Trăng - Tăng 20% tốc độ tu luyện!')}
+        onClick={() => openModal('EVENT')}
         style={{ left: '0.85%', top: '23.74%', width: '29.97%', height: '6.46%' }}
         className="absolute z-20 cursor-pointer hover:scale-105 active:scale-95 transition drop-shadow-md"
-        title="Sự Kiện"
+        title="Mở Sự Kiện Thất Tịch"
       >
-        <img src={ASSETS.ui.bannerSuKien} alt="Banner Sự Kiện" className="w-full h-full object-contain" />
+        <img src={ASSETS.khung.bannerSuKien} alt="Banner Sự Kiện" className="w-full h-full object-contain" />
       </div>
 
       {/* 4. Interactive Hotspot: Đài Tu Luyện (Pavilion top right) */}
@@ -65,9 +64,9 @@ export const DongPhuView: React.FC = () => {
 
       {/* 6. Interactive Hotspot: Trận Tụ Linh (Right crystal array) */}
       <button
-        onClick={() => setNotification('Trận Tụ Linh đang vận chuyển, linh khí xung quanh tăng +20%!')}
+        onClick={() => openModal('SPIRIT_ARRAY')}
         className="absolute top-[34%] right-[6%] w-[28%] h-[15%] z-20 cursor-pointer rounded-full group transition-all p-0 bg-transparent border-0"
-        title="Trận Tụ Linh"
+        title="Mở Trận Tụ Linh"
       >
         <div className="w-full h-full rounded-full group-hover:bg-cyan-400/20 group-hover:ring-2 group-hover:ring-cyan-300/50 group-active:scale-95 transition flex items-center justify-center">
           <div className="absolute -top-3 left-1/2 -translate-x-1/2 pointer-events-none opacity-90 group-hover:opacity-100 group-hover:scale-110 transition drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
@@ -78,9 +77,9 @@ export const DongPhuView: React.FC = () => {
 
       {/* 7. Interactive Hotspot: Kho Chứa (Lower-left hut) */}
       <button
-        onClick={() => setNotification('Kho Chứa: Cất giữ an toàn 120/150 món bảo vật và thảo dược.')}
+        onClick={() => openModal('INVENTORY')}
         className="absolute top-[49%] left-[5%] w-[30%] h-[15%] z-20 cursor-pointer rounded-2xl group transition-all p-0 bg-transparent border-0"
-        title="Kho Chứa"
+        title="Mở Kho Chứa (Túi Trữ Vật)"
       >
         <div className="w-full h-full rounded-2xl group-hover:bg-amber-600/20 group-hover:ring-2 group-hover:ring-amber-500/50 group-active:scale-95 transition flex items-center justify-center">
           <div className="absolute -top-3 left-1/2 -translate-x-1/2 pointer-events-none opacity-90 group-hover:opacity-100 group-hover:scale-110 transition drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
@@ -104,9 +103,9 @@ export const DongPhuView: React.FC = () => {
 
       {/* 9. Interactive Hotspot: Hồ Linh Ngư (Bottom left koi pond) */}
       <button
-        onClick={() => setNotification('Hồ Linh Ngư: Đàn cá chép vàng bơi lội, tâm cảnh được thanh lọc +10!')}
+        onClick={() => openModal('KOI_POND')}
         className="absolute bottom-[13%] left-[12%] w-[38%] h-[13%] z-20 cursor-pointer rounded-full group transition-all p-0 bg-transparent border-0"
-        title="Hồ Linh Ngư"
+        title="Thăm Hồ Linh Ngư"
       >
         <div className="w-full h-full rounded-full group-hover:bg-cyan-500/20 group-hover:ring-2 group-hover:ring-cyan-400/50 group-active:scale-95 transition flex items-center justify-center">
           <div className="absolute -top-3 left-1/2 -translate-x-1/2 pointer-events-none opacity-90 group-hover:opacity-100 group-hover:scale-110 transition drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">

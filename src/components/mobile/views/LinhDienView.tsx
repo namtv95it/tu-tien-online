@@ -9,6 +9,7 @@ export const LinhDienView: React.FC = () => {
   const fertilizePlot = useGameStore((state) => state.fertilizePlot);
   const harvestPlot = useGameStore((state) => state.harvestPlot);
   const setNotification = useGameStore((state) => state.setNotification);
+  const openModal = useGameStore((state) => state.openModal);
 
   const [wateringAnim, setWateringAnim] = useState(false);
   const [selectedPlotIndex, setSelectedPlotIndex] = useState(0);
@@ -51,24 +52,24 @@ export const LinhDienView: React.FC = () => {
         className="absolute inset-0 w-full h-full object-cover object-top pointer-events-none"
       />
 
-      {/* 2. Khung Nhiệm Vụ (Top-Left) */}
+      {/* 2. Khung Nhiệm Vụ (Top-Left) từ assets/images/khung */}
       <div
-        onClick={() => setNotification('Nhiệm vụ: Chăm sóc linh thảo và thu hoạch 3 vị thuốc')}
+        onClick={() => openModal('QUESTS')}
         style={{ left: L.khung_nhiem_vu.left, top: L.khung_nhiem_vu.top, width: L.khung_nhiem_vu.width, height: L.khung_nhiem_vu.height }}
         className="absolute z-20 cursor-pointer hover:scale-105 active:scale-95 transition drop-shadow-md"
         title="Nhiệm Vụ Linh Điền"
       >
-        <img src={getAssetUrl(L.khung_nhiem_vu.path)} alt="Khung Nhiệm Vụ" className="w-full h-full object-contain" />
+        <img src={ASSETS.khung.nhiemVu} alt="Khung Nhiệm Vụ" className="w-full h-full object-contain" />
       </div>
 
-      {/* 3. Banner Sự Kiện (Under Mission Box) */}
+      {/* 3. Banner Sự Kiện (Under Mission Box) từ assets/images/khung */}
       <div
-        onClick={() => setNotification('Sự kiện: Thưởng Nguyệt Trồng Thảo - Tăng 50% sản lượng linh thảo!')}
+        onClick={() => openModal('EVENT')}
         style={{ left: L.banner_su_kien.left, top: L.banner_su_kien.top, width: L.banner_su_kien.width, height: L.banner_su_kien.height }}
         className="absolute z-20 cursor-pointer hover:scale-105 active:scale-95 transition drop-shadow-md"
-        title="Sự Kiện"
+        title="Banner Sự Kiện"
       >
-        <img src={getAssetUrl(L.banner_su_kien.path)} alt="Banner Sự Kiện" className="w-full h-full object-contain" />
+        <img src={ASSETS.khung.bannerSuKien} alt="Banner Sự Kiện" className="w-full h-full object-contain" />
       </div>
 
       {/* 4. Interactive Garden Bed Hotspots (The herbs are already painted on the background) */}

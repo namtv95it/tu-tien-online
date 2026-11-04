@@ -6,6 +6,7 @@ export const MobileHeader: React.FC = () => {
   const character = useGameStore((state) => state.character);
   const activeTab = useGameStore((state) => state.activeTab);
   const setNotification = useGameStore((state) => state.setNotification);
+  const openModal = useGameStore((state) => state.openModal);
 
   const cultivationPercent = Math.min(
     100,
@@ -19,7 +20,11 @@ export const MobileHeader: React.FC = () => {
         {/* Left: Chibi Cultivator Avatar & Realm Info */}
         <div className="flex items-center gap-2">
           {/* Avatar with Level Badge */}
-          <div className="relative w-12 h-12 shrink-0">
+          <div
+            onClick={() => openModal('INVENTORY')}
+            className="relative w-12 h-12 shrink-0 cursor-pointer hover:scale-105 active:scale-95 transition"
+            title="Mở Túi Trữ Vật"
+          >
             <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-amber-400/80 shadow-[0_0_10px_rgba(245,158,11,0.3)] bg-gradient-to-b from-slate-800 to-slate-950 flex items-center justify-center">
               <img
                 src={ASSETS.ui.avatarTuSi}
@@ -106,7 +111,7 @@ export const MobileHeader: React.FC = () => {
       {activeTab !== 'tu-luyen' && (
         <div className="flex justify-end gap-3 px-1 pt-1 text-[10px] text-amber-200/90 font-medium">
           <div
-            onClick={() => setNotification('Hộp thư: Bạn có 2 thư chưa đọc từ Tông Môn!')}
+            onClick={() => openModal('MAIL')}
             className="relative flex flex-col items-center cursor-pointer hover:scale-105 active:scale-95 transition"
             title="Thư từ"
           >
@@ -116,7 +121,7 @@ export const MobileHeader: React.FC = () => {
           </div>
 
           <div
-            onClick={() => setNotification('Thông báo: Hoạt động Thất Tịch Thưởng Trăng khai mở!')}
+            onClick={() => openModal('ANNOUNCEMENTS')}
             className="flex flex-col items-center cursor-pointer hover:scale-105 active:scale-95 transition"
             title="Thông báo"
           >
@@ -125,7 +130,7 @@ export const MobileHeader: React.FC = () => {
           </div>
 
           <div
-            onClick={() => setNotification('Cài đặt: Tùy chỉnh âm thanh, đồ họa và hiển thị.')}
+            onClick={() => openModal('SETTINGS')}
             className="flex flex-col items-center cursor-pointer hover:scale-105 active:scale-95 transition"
             title="Cài đặt"
           >

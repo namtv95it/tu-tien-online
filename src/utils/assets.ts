@@ -38,6 +38,17 @@ export const ASSETS = {
     phuongThi: getAssetUrl('images/nav/phuong_thi.png'),
   },
 
+  // Khung viền UI (từ assets/images/khung)
+  khung: {
+    thongTinNhanVat: getAssetUrl('images/khung/01_khung_thong_tin_nhan_vat.png'),
+    nhiemVu: getAssetUrl('images/khung/02_khung_nhiem_vu_va_banner.png'),
+    bannerSuKien: getAssetUrl('images/khung/03_banner_su_kien.png'),
+    thanhNgocBich: getAssetUrl('images/khung/04_thanh_ngoc_bich.png'),
+    thanhLinhThach: getAssetUrl('images/khung/05_thanh_linh_thach.png'),
+    thanhNguyenBao: getAssetUrl('images/khung/06_thanh_nguyen_bao.png'),
+    thanhTheLuc: getAssetUrl('images/khung/07_thanh_the_luc.png'),
+  },
+
   // Header & General UI
   ui: {
     avatarTuSi: getAssetUrl('images/nhan_vat/tu_si_nam.png'),

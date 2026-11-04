@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { MobileHeader } from './components/mobile/MobileHeader';
 import { BottomNav } from './components/mobile/BottomNav';
 import { NotificationToast } from './components/mobile/NotificationToast';
+import { GameModals } from './components/mobile/modals/GameModals';
 import { TuLuyenView } from './components/mobile/views/TuLuyenView';
 import { DongPhuView } from './components/mobile/views/DongPhuView';
 import { LinhDienView } from './components/mobile/views/LinhDienView';
@@ -57,6 +58,9 @@ export const App: React.FC = () => {
 
         {/* Notification Toast */}
         <NotificationToast />
+
+        {/* Global Modals (Quests, Inventory, Techniques, Settings, etc.) */}
+        <GameModals />
       </div>
     </div>
   );

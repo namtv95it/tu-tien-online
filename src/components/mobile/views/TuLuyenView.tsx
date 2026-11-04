@@ -10,6 +10,7 @@ export const TuLuyenView: React.FC = () => {
   const thamNgo = useGameStore((state) => state.thamNgo);
   const attemptBreakthrough = useGameStore((state) => state.attemptBreakthrough);
   const setNotification = useGameStore((state) => state.setNotification);
+  const openModal = useGameStore((state) => state.openModal);
 
   const [floaters, setFloaters] = useState<{ id: number; x: number; y: number; text: string }[]>([]);
 
@@ -90,7 +91,7 @@ export const TuLuyenView: React.FC = () => {
 
       {/* Nút Đổi Công Pháp */}
       <button
-        onClick={() => setNotification('Công pháp: Trường Xuân Công (Tăng hồi phục linh lực +15%/giây)')}
+        onClick={() => openModal('TECHNIQUES')}
         style={{ left: L.nut_doi_cong_phap.left, top: L.nut_doi_cong_phap.top, width: L.nut_doi_cong_phap.width, height: L.nut_doi_cong_phap.height }}
         className="absolute z-25 p-0 bg-transparent border-0 cursor-pointer active:scale-95 transition group"
         title="Đổi công pháp"

@@ -258,3 +258,4 @@ Người chơi truy cập vào đường link GitHub Pages trên điện thoại
 4. Căn chỉnh cường độ lửa và luyện thành công viên đan dược tại Đan Phòng.
 5. Ghé thăm Phường Thị đổi đan dược lấy linh thạch hoặc sắm sửa vật phẩm quý.
 6. Tắt trình duyệt, hôm sau quay lại mở trang web vẫn giữ nguyên vẹn tiến trình và nhận đầy đủ tu vi bế quan 8 giờ.
+

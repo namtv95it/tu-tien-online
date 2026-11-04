@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
 import { useGameStore } from '../../../store/gameStore';
-import { ASSETS } from '../../../utils/assets';
+import { ASSETS, getAssetUrl } from '../../../utils/assets';
+import { DESIGN_LAYOUT } from '../../../utils/designCoordinates';
 
 export const LinhDienView: React.FC = () => {
   const gardenPlots = useGameStore((state) => state.gardenPlots);
   const waterPlot = useGameStore((state) => state.waterPlot);
   const fertilizePlot = useGameStore((state) => state.fertilizePlot);
   const harvestPlot = useGameStore((state) => state.harvestPlot);
+  const setNotification = useGameStore((state) => state.setNotification);
 
   const [wateringAnim, setWateringAnim] = useState(false);
+  const [selectedPlotIndex, setSelectedPlotIndex] = useState(0);
 
-  const activePlot = gardenPlots[0]; // Mộc Linh Hoa
+  const L = DESIGN_LAYOUT.linh_dien;
+
+  const activePlot = gardenPlots[selectedPlotIndex] || gardenPlots[0];
   const isAnyReady = gardenPlots.some((p) => p.ready);
 
   const handleWater = (id: number) => {
@@ -25,92 +30,152 @@ export const LinhDienView: React.FC = () => {
     return `00:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
   };
 
+  // 8 plant hotspots corresponding to the garden beds painted on background
+  const plots = [
+    { key: 'cay_hoa_tim', layout: L.cay_hoa_tim, name: 'Hàn Băng Thảo', plotId: 1 },
+    { key: 'cay_giong', layout: L.cay_giong, name: 'Mầm Mộc Linh', plotId: 2 },
+    { key: 'cay_qua_do', layout: L.cay_qua_do, name: 'Xích Huyết Quả', plotId: 3 },
+    { key: 'cay_nhan_sam', layout: L.cay_nhan_sam, name: 'Bách Niên Sâm', plotId: 4 },
+    { key: 'cay_hoa_xanh', layout: L.cay_hoa_xanh, name: 'U Lan Hoa', plotId: 5 },
+    { key: 'cay_dang_tuoi', layout: L.cay_dang_tuoi, name: 'Thanh Phong Thảo', plotId: 6 },
+    { key: 'cay_la_xanh', layout: L.cay_la_xanh, name: 'Bích Diệp Đằng', plotId: 7 },
+    { key: 'cay_nhan_sam_2', layout: L.cay_nhan_sam_2, name: 'Hoàng Tinh Căn', plotId: 8 },
+  ];
+
   return (
-    <div className="relative w-full aspect-[9/16] min-h-[700px] select-none text-slate-100 overflow-hidden shadow-inner">
-      {/* 1. High-Res Clean Background */}
+    <div className="absolute inset-0 w-full h-full select-none text-slate-100 overflow-hidden">
+      {/* 1. Background Scene (Already contains the lush garden, 8 herb beds, and watering cultivator) */}
       <img
         src={ASSETS.backgrounds.linhDien}
-        alt="Linh Điền"
+        alt="Vườn Thảo Dược"
         className="absolute inset-0 w-full h-full object-cover object-top pointer-events-none"
       />
 
-      {/* 2. Interactive Garden Beds Hotspots */}
+      {/* 2. Khung Nhiệm Vụ (Top-Left) */}
       <div
-        onClick={() => handleWater(1)}
-        className="absolute top-[35%] left-[24%] w-[22%] h-[12%] z-20 cursor-pointer rounded-xl hover:bg-cyan-400/20 active:scale-95 transition"
-        title="Chăm sóc Ô Mộc Linh Hoa"
-      />
+        onClick={() => setNotification('Nhiệm vụ: Chăm sóc linh thảo và thu hoạch 3 vị thuốc')}
+        style={{ left: L.khung_nhiem_vu.left, top: L.khung_nhiem_vu.top, width: L.khung_nhiem_vu.width, height: L.khung_nhiem_vu.height }}
+        className="absolute z-20 cursor-pointer hover:scale-105 active:scale-95 transition drop-shadow-md"
+        title="Nhiệm Vụ Linh Điền"
+      >
+        <img src={getAssetUrl(L.khung_nhiem_vu.path)} alt="Khung Nhiệm Vụ" className="w-full h-full object-contain" />
+      </div>
 
-      {/* Cultivator Watering Animation Overlay */}
+      {/* 3. Banner Sự Kiện (Under Mission Box) */}
+      <div
+        onClick={() => setNotification('Sự kiện: Thưởng Nguyệt Trồng Thảo - Tăng 50% sản lượng linh thảo!')}
+        style={{ left: L.banner_su_kien.left, top: L.banner_su_kien.top, width: L.banner_su_kien.width, height: L.banner_su_kien.height }}
+        className="absolute z-20 cursor-pointer hover:scale-105 active:scale-95 transition drop-shadow-md"
+        title="Sự Kiện"
+      >
+        <img src={getAssetUrl(L.banner_su_kien.path)} alt="Banner Sự Kiện" className="w-full h-full object-contain" />
+      </div>
+
+      {/* 4. Interactive Garden Bed Hotspots (The herbs are already painted on the background) */}
+      {plots.map((p, idx) => (
+        <div
+          key={p.key}
+          onClick={() => {
+            setSelectedPlotIndex(idx % gardenPlots.length);
+            setNotification(`Đang chăm sóc: ${p.name}`);
+          }}
+          style={{ left: p.layout.left, top: p.layout.top, width: p.layout.width, height: p.layout.height }}
+          className={`absolute z-20 cursor-pointer rounded-xl hover:bg-emerald-400/20 active:scale-95 transition flex items-center justify-center ${
+            selectedPlotIndex === (idx % gardenPlots.length) ? 'ring-2 ring-emerald-400 bg-emerald-400/20 shadow-[0_0_12px_rgba(52,211,153,0.6)]' : ''
+          }`}
+          title={p.name}
+        />
+      ))}
+
+      {/* Water droplet splash effect when watering */}
       {wateringAnim && (
-        <div className="absolute top-[30%] left-[35%] z-30 pointer-events-none animate-bounce duration-700">
-          <img
-            src={ASSETS.linhDien.nhanVat}
-            alt="Đang tưới cây"
-            className="w-24 h-auto drop-shadow-[0_4px_12px_rgba(56,189,248,0.8)]"
-          />
+        <div
+          style={{ left: L.nhan_vat_tuoi_cay.left, top: L.nhan_vat_tuoi_cay.top, width: L.nhan_vat_tuoi_cay.width, height: L.nhan_vat_tuoi_cay.height }}
+          className="absolute z-25 pointer-events-none flex items-center justify-center"
+        >
+          <div className="w-24 h-24 rounded-full bg-cyan-400/30 blur-xl animate-ping" />
         </div>
       )}
 
-      {/* 3. Live Details Overlay on Bottom Panel */}
-      <div className="absolute bottom-[23%] left-[48%] z-20 text-[11px] font-medium text-slate-200">
-        <span className="text-cyan-300 font-bold">{formatTime(activePlot.timeLeftSeconds)}</span>
+      {/* 5. Khung Thông Tin Linh Thảo (Bottom Large Panel) */}
+      <div
+        style={{ left: L.khung_thong_tin_linh_thao.left, top: L.khung_thong_tin_linh_thao.top, width: L.khung_thong_tin_linh_thao.width, height: L.khung_thong_tin_linh_thao.height }}
+        className="absolute z-20 pointer-events-none drop-shadow-lg"
+      >
+        <img src={getAssetUrl(L.khung_thong_tin_linh_thao.path)} alt="Khung Thông Tin Linh Thảo" className="w-full h-full object-fill" />
       </div>
 
-      <div className="absolute bottom-[20%] left-[48%] z-20 text-[11px] font-medium text-slate-200">
-        <span className="text-emerald-400 font-bold">{activePlot.moisture}% (Tốt)</span>
+      {/* Ảnh Linh Thảo trong khung */}
+      <div
+        style={{ left: L.anh_linh_thao.left, top: L.anh_linh_thao.top, width: L.anh_linh_thao.width, height: L.anh_linh_thao.height }}
+        className="absolute z-25 pointer-events-none drop-shadow"
+      >
+        <img src={getAssetUrl(L.anh_linh_thao.path)} alt="Linh Thảo Minh Họa" className="w-full h-full object-contain" />
       </div>
 
-      {/* 4. Three Bottom Action Buttons */}
-      <div className="absolute bottom-[9.5%] left-[4%] right-[4%] h-[7.5%] z-20 flex justify-between gap-1.5 items-center">
-        {/* Nút Tưới */}
-        <button
-          onClick={() => handleWater(1)}
-          className="w-[30%] h-full flex items-center justify-center p-0 bg-transparent border-0 cursor-pointer active:scale-95 transition group"
-          title="Tưới Nước Linh Tuyền"
-        >
-          <img
-            src={ASSETS.linhDien.nutTuoi}
-            alt="Tưới Nước"
-            className="w-full h-full object-contain filter group-hover:brightness-110 group-active:brightness-90 transition drop-shadow"
-          />
-        </button>
-
-        {/* Nút Bón Linh Thạch */}
-        <button
-          onClick={() => fertilizePlot(1)}
-          className="w-[36%] h-full flex items-center justify-center p-0 bg-transparent border-0 cursor-pointer active:scale-95 transition group"
-          title="Bón Linh Thạch Thúc Đẩy Sinh Trưởng"
-        >
-          <img
-            src={ASSETS.linhDien.nutBonLinhThach}
-            alt="Bón Linh Thạch"
-            className="w-full h-full object-contain filter group-hover:brightness-110 group-active:brightness-90 transition drop-shadow"
-          />
-        </button>
-
-        {/* Nút Thu Hoạch */}
-        <button
-          onClick={() => {
-            if (isAnyReady) {
-              const readyPlot = gardenPlots.find((p) => p.ready);
-              if (readyPlot) harvestPlot(readyPlot.id);
-            } else {
-              harvestPlot(1);
-            }
-          }}
-          className="w-[32%] h-full flex items-center justify-center p-0 bg-transparent border-0 cursor-pointer active:scale-95 transition group"
-          title="Thu Hoạch Linh Thảo"
-        >
-          <img
-            src={ASSETS.linhDien.nutThuHoach}
-            alt="Thu Hoạch"
-            className={`w-full h-full object-contain filter group-hover:brightness-110 group-active:brightness-90 transition drop-shadow ${
-              isAnyReady ? 'animate-pulse drop-shadow-[0_0_10px_rgba(52,211,153,0.8)]' : ''
-            }`}
-          />
-        </button>
+      {/* Bảng Trạng Thái Cây với live overlay data */}
+      <div
+        style={{ left: L.bang_trang_thai_cay.left, top: L.bang_trang_thai_cay.top, width: L.bang_trang_thai_cay.width, height: L.bang_trang_thai_cay.height }}
+        className="absolute z-25 pointer-events-none"
+      >
+        <img src={getAssetUrl(L.bang_trang_thai_cay.path)} alt="Bảng Trạng Thái Cây" className="w-full h-full object-contain" />
+        {/* Dynamic live timer & moisture overlay */}
+        <div className="absolute top-[48%] left-[45%] text-[10px] font-bold text-cyan-300 font-mono drop-shadow">
+          {formatTime(activePlot.timeLeftSeconds)}
+        </div>
+        <div className="absolute top-[68%] left-[45%] text-[10px] font-bold text-emerald-400 font-mono drop-shadow">
+          {activePlot.moisture}% (Tốt)
+        </div>
       </div>
+
+      {/* 6. Three Action Buttons: Tưới, Bón Linh Thạch, Thu Hoạch */}
+      <button
+        onClick={() => handleWater(activePlot.id)}
+        style={{ left: L.nut_tuoi.left, top: L.nut_tuoi.top, width: L.nut_tuoi.width, height: L.nut_tuoi.height }}
+        className="absolute z-30 p-0 bg-transparent border-0 cursor-pointer active:scale-95 transition group"
+        title="Tưới Nước Linh Tuyền"
+      >
+        <img
+          src={getAssetUrl(L.nut_tuoi.path)}
+          alt="Tưới Nước"
+          className="w-full h-full object-contain filter group-hover:brightness-110 drop-shadow"
+        />
+      </button>
+
+      <button
+        onClick={() => fertilizePlot(activePlot.id)}
+        style={{ left: L.nut_bon_linh_thach.left, top: L.nut_bon_linh_thach.top, width: L.nut_bon_linh_thach.width, height: L.nut_bon_linh_thach.height }}
+        className="absolute z-30 p-0 bg-transparent border-0 cursor-pointer active:scale-95 transition group"
+        title="Bón Linh Thạch"
+      >
+        <img
+          src={getAssetUrl(L.nut_bon_linh_thach.path)}
+          alt="Bón Linh Thạch"
+          className="w-full h-full object-contain filter group-hover:brightness-110 drop-shadow"
+        />
+      </button>
+
+      <button
+        onClick={() => {
+          if (isAnyReady) {
+            const readyPlot = gardenPlots.find((p) => p.ready);
+            if (readyPlot) harvestPlot(readyPlot.id);
+          } else {
+            harvestPlot(activePlot.id);
+          }
+        }}
+        style={{ left: L.nut_thu_hoach.left, top: L.nut_thu_hoach.top, width: L.nut_thu_hoach.width, height: L.nut_thu_hoach.height }}
+        className="absolute z-30 p-0 bg-transparent border-0 cursor-pointer active:scale-95 transition group"
+        title="Thu Hoạch Linh Thảo"
+      >
+        <img
+          src={getAssetUrl(L.nut_thu_hoach.path)}
+          alt="Thu Hoạch"
+          className={`w-full h-full object-contain filter group-hover:brightness-110 drop-shadow ${
+            isAnyReady ? 'animate-pulse drop-shadow-[0_0_12px_rgba(52,211,153,0.9)]' : ''
+          }`}
+        />
+      </button>
     </div>
   );
 };

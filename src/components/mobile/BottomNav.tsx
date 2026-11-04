@@ -23,7 +23,7 @@ export const BottomNav: React.FC = () => {
   const setActiveTab = useGameStore((state) => state.setActiveTab);
 
   return (
-    <nav className="relative z-30 w-full bg-[#08101a]/95 backdrop-blur-md border-t border-amber-600/40 px-1 py-1 select-none shadow-[0_-5px_25px_rgba(0,0,0,0.8)]">
+    <nav className="absolute bottom-0 left-0 right-0 z-40 w-full bg-[#08101a]/95 backdrop-blur-md border-t border-amber-600/40 px-1 py-1 select-none shadow-[0_-5px_25px_rgba(0,0,0,0.8)]">
       <div className="flex justify-around items-center">
         {TABS.map((tab) => {
           const isActive = activeTab === tab.id;

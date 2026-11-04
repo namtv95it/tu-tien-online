@@ -13,7 +13,7 @@ export const MobileHeader: React.FC = () => {
   );
 
   return (
-    <header className="relative z-30 w-full px-2.5 pt-2 pb-1.5 bg-gradient-to-b from-[#0b1420]/95 via-[#0b1420]/80 to-transparent select-none text-slate-100">
+    <header className="absolute top-0 left-0 right-0 z-40 w-full px-2.5 pt-2 pb-1.5 bg-gradient-to-b from-[#0b1420]/95 via-[#0b1420]/75 to-transparent select-none text-slate-100">
       {/* Top Main Row */}
       <div className="flex items-center justify-between gap-1.5">
         {/* Left: Chibi Cultivator Avatar & Realm Info */}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useGameStore } from '../../../store/gameStore';
-import { ASSETS } from '../../../utils/assets';
+import { ASSETS, getAssetUrl } from '../../../utils/assets';
+import { DESIGN_LAYOUT } from '../../../utils/designCoordinates';
 
 export const TuLuyenView: React.FC = () => {
   const character = useGameStore((state) => state.character);
@@ -11,6 +12,8 @@ export const TuLuyenView: React.FC = () => {
   const setNotification = useGameStore((state) => state.setNotification);
 
   const [floaters, setFloaters] = useState<{ id: number; x: number; y: number; text: string }[]>([]);
+
+  const L = DESIGN_LAYOUT.tu_luyen;
 
   const handleCenterClick = (e: React.MouseEvent<HTMLElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -37,11 +40,11 @@ export const TuLuyenView: React.FC = () => {
   );
 
   return (
-    <div className="relative w-full aspect-[9/16] min-h-[700px] select-none text-slate-100 overflow-hidden shadow-inner">
-      {/* 1. High-Res Clean Background */}
+    <div className="absolute inset-0 w-full h-full select-none text-slate-100 overflow-hidden">
+      {/* 1. Background Scene (Already contains the scenic cave and meditating Daoist) */}
       <img
         src={ASSETS.backgrounds.tuLuyen}
-        alt="Tu Luyện"
+        alt="Thiền Đường"
         className="absolute inset-0 w-full h-full object-cover object-top pointer-events-none"
       />
 
@@ -50,95 +53,140 @@ export const TuLuyenView: React.FC = () => {
         <div
           key={f.id}
           style={{ left: f.x, top: f.y }}
-          className="absolute pointer-events-none z-40 font-bold text-xs text-amber-300 animate-out fade-out slide-out-to-top duration-700 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]"
+          className="absolute pointer-events-none z-50 font-bold text-xs text-amber-300 animate-out fade-out slide-out-to-top duration-700 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]"
         >
           ✨ {f.text}
         </div>
       ))}
 
-      {/* 2. Meditating Daoist Sprite & Aura Effects */}
+      {/* 2. Tiêu Đề: Đài Tu Luyện */}
+      <div
+        style={{ left: L.tieu_de.left, top: L.tieu_de.top, width: L.tieu_de.width, height: L.tieu_de.height }}
+        className="absolute z-20 pointer-events-none drop-shadow-md"
+      >
+        <img src={getAssetUrl(L.tieu_de.path)} alt="Đài Tu Luyện" className="w-full h-full object-contain" />
+      </div>
+
+      {/* 3. Interactive Cultivator Tap Hotspot (The Daoist is already painted in the background) */}
       <div
         onClick={handleCenterClick}
-        className="absolute top-[18%] left-[24%] right-[24%] h-[28%] z-10 cursor-pointer flex items-center justify-center group active:scale-95 transition"
+        style={{ left: L.nhan_vat_thien_dinh.left, top: L.nhan_vat_thien_dinh.top, width: L.nhan_vat_thien_dinh.width, height: L.nhan_vat_thien_dinh.height }}
+        className="absolute z-20 cursor-pointer flex items-center justify-center group active:scale-95 transition rounded-full"
         title="Chạm vào Đạo Sĩ để Vận Khí Tụ Linh"
       >
-        {/* Subtle Qi aura glow when meditating */}
+        {/* Breathing aura when meditating */}
         {character.isMeditating && (
-          <div className="absolute inset-0 bg-cyan-400/20 rounded-full blur-xl animate-pulse pointer-events-none" />
+          <div className="w-48 h-48 rounded-full bg-cyan-400/20 blur-xl animate-pulse pointer-events-none" />
         )}
       </div>
 
-      {/* 3. Interactive Hotspot: "Đổi công pháp >" */}
+      {/* 4. Khung Công Pháp */}
+      <div
+        style={{ left: L.khung_cong_phap.left, top: L.khung_cong_phap.top, width: L.khung_cong_phap.width, height: L.khung_cong_phap.height }}
+        className="absolute z-20 drop-shadow-md pointer-events-none"
+      >
+        <img src={getAssetUrl(L.khung_cong_phap.path)} alt="Khung Công Pháp" className="w-full h-full object-fill" />
+      </div>
+
+      {/* Nút Đổi Công Pháp */}
       <button
         onClick={() => setNotification('Công pháp: Trường Xuân Công (Tăng hồi phục linh lực +15%/giây)')}
-        className="absolute top-[49%] right-[8%] z-20 px-3 py-1 text-[11px] font-bold text-amber-200 hover:text-white rounded-full bg-slate-900/60 border border-amber-500/30 backdrop-blur active:scale-95 transition hover:border-amber-400"
+        style={{ left: L.nut_doi_cong_phap.left, top: L.nut_doi_cong_phap.top, width: L.nut_doi_cong_phap.width, height: L.nut_doi_cong_phap.height }}
+        className="absolute z-25 p-0 bg-transparent border-0 cursor-pointer active:scale-95 transition group"
+        title="Đổi công pháp"
       >
-        Đổi công pháp &gt;
+        <img
+          src={getAssetUrl(L.nut_doi_cong_phap.path)}
+          alt="Đổi công pháp"
+          className="w-full h-full object-contain filter group-hover:brightness-110 drop-shadow"
+        />
       </button>
 
-      {/* 4. Live Tu Vi Progress Overlay */}
-      <div className="absolute top-[57%] left-[10%] right-[10%] z-20 flex justify-between items-center text-[10px] text-slate-200 font-mono">
-        <span className="font-bold text-cyan-200">Luyện Khí tầng {character.realmLevel}</span>
-        <span>{character.cultivation.toLocaleString()} / {character.cultivationThreshold.toLocaleString()}</span>
-      </div>
-      <div className="absolute top-[59.5%] left-[10%] right-[10%] h-1.5 z-20 rounded-full overflow-hidden">
-        <div
-          className="h-full bg-gradient-to-r from-emerald-400 via-cyan-300 to-amber-300 transition-all duration-300"
-          style={{ width: `${cultivationPercent}%` }}
-        />
+      {/* 5. Khung Tu Vi Đột Phá */}
+      <div
+        style={{ left: L.khung_tu_vi_dot_pha.left, top: L.khung_tu_vi_dot_pha.top, width: L.khung_tu_vi_dot_pha.width, height: L.khung_tu_vi_dot_pha.height }}
+        className="absolute z-20 drop-shadow-md pointer-events-none"
+      >
+        <img src={getAssetUrl(L.khung_tu_vi_dot_pha.path)} alt="Khung Tu Vi" className="w-full h-full object-fill" />
+        {/* Dynamic progress bar fill */}
+        <div className="absolute top-[32%] left-[17%] right-[32%] h-[26%] rounded-full overflow-hidden pointer-events-none">
+          <div
+            className="h-full bg-gradient-to-r from-emerald-400 via-cyan-300 to-amber-300 transition-all duration-300 shadow-[0_0_8px_rgba(56,189,248,0.7)]"
+            style={{ width: `${cultivationPercent}%` }}
+          />
+        </div>
+        {/* Cultivation numbers text */}
+        <div className="absolute top-[28%] left-[18%] right-[33%] flex justify-between items-center text-[9px] text-slate-100 font-mono font-bold drop-shadow">
+          <span>Luyện Khí tầng {character.realmLevel}</span>
+          <span>{character.cultivation}/{character.cultivationThreshold} ({cultivationPercent}%)</span>
+        </div>
       </div>
 
-      {/* 5. Breakthrough Button Hotspot */}
+      {/* Nút Đột Phá Hotspot over the right side of Khung Tu Vi */}
       <button
         onClick={handleBreakthrough}
-        className="absolute top-[62.5%] right-[8%] z-20 w-[42%] h-[5%] rounded-full opacity-0 hover:opacity-20 bg-amber-400 cursor-pointer active:scale-95 transition"
-        title="Đột phá cảnh giới"
+        style={{ left: '70%', top: L.khung_tu_vi_dot_pha.top, width: '24%', height: L.khung_tu_vi_dot_pha.height }}
+        className="absolute z-25 cursor-pointer rounded-xl hover:bg-amber-400/20 active:scale-95 transition"
+        title="Đột Phá Cảnh Giới"
       />
 
       {/* 6. Three Action Buttons: Bế quan, Vận khí, Tham ngộ */}
-      <div className="absolute top-[69%] left-[6%] right-[6%] h-[16%] z-20 flex justify-between items-center">
-        {/* Bế quan button */}
-        <button
-          onClick={toggleBeQuan}
-          className="w-[30%] h-full flex flex-col items-center justify-center p-0 bg-transparent border-0 cursor-pointer active:scale-95 transition group"
-          title="Bế quan tu luyện liên tục"
-        >
-          <img
-            src={ASSETS.tuLuyen.nutBeQuan}
-            alt="Bế Quan"
-            className={`w-full h-full object-contain filter transition-all ${
-              character.isMeditating
-                ? 'drop-shadow-[0_0_12px_rgba(245,158,11,0.8)] brightness-110'
-                : 'opacity-90 group-hover:opacity-100 group-hover:brightness-105'
-            }`}
-          />
-        </button>
+      <button
+        onClick={toggleBeQuan}
+        style={{ left: L.nut_be_quan.left, top: L.nut_be_quan.top, width: L.nut_be_quan.width, height: L.nut_be_quan.height }}
+        className="absolute z-25 p-0 bg-transparent border-0 cursor-pointer active:scale-95 transition group"
+        title="Bế Quan"
+      >
+        <img
+          src={getAssetUrl(L.nut_be_quan.path)}
+          alt="Bế Quan"
+          className={`w-full h-full object-contain filter transition-all ${
+            character.isMeditating
+              ? 'drop-shadow-[0_0_14px_rgba(245,158,11,0.9)] brightness-115 scale-105'
+              : 'group-hover:brightness-110 drop-shadow'
+          }`}
+        />
+      </button>
 
-        {/* Vận khí button */}
-        <button
-          onClick={handleCenterClick}
-          className="w-[30%] h-full flex flex-col items-center justify-center p-0 bg-transparent border-0 cursor-pointer active:scale-95 transition group"
-          title="Vận khí hấp thu linh khí (+120 Tu Vi)"
-        >
-          <img
-            src={ASSETS.tuLuyen.nutVanKhi}
-            alt="Vận Khí"
-            className="w-full h-full object-contain opacity-90 group-hover:opacity-100 group-hover:brightness-105 transition-all group-hover:drop-shadow-[0_0_10px_rgba(56,189,248,0.6)]"
-          />
-        </button>
+      <button
+        onClick={handleCenterClick}
+        style={{ left: L.nut_van_khi.left, top: L.nut_van_khi.top, width: L.nut_van_khi.width, height: L.nut_van_khi.height }}
+        className="absolute z-25 p-0 bg-transparent border-0 cursor-pointer active:scale-95 transition group"
+        title="Vận Khí (+120 Tu Vi)"
+      >
+        <img
+          src={getAssetUrl(L.nut_van_khi.path)}
+          alt="Vận Khí"
+          className="w-full h-full object-contain filter group-hover:brightness-110 group-hover:drop-shadow-[0_0_12px_rgba(56,189,248,0.7)] drop-shadow transition"
+        />
+      </button>
 
-        {/* Tham ngộ button */}
-        <button
-          onClick={thamNgo}
-          className="w-[30%] h-full flex flex-col items-center justify-center p-0 bg-transparent border-0 cursor-pointer active:scale-95 transition group"
-          title="Tham ngộ đạo lý công pháp (+350 Tu Vi)"
-        >
-          <img
-            src={ASSETS.tuLuyen.nutThamNgo}
-            alt="Tham Ngộ"
-            className="w-full h-full object-contain opacity-90 group-hover:opacity-100 group-hover:brightness-105 transition-all group-hover:drop-shadow-[0_0_10px_rgba(245,158,11,0.6)]"
-          />
-        </button>
+      <button
+        onClick={thamNgo}
+        style={{ left: L.nut_tham_ngo.left, top: L.nut_tham_ngo.top, width: L.nut_tham_ngo.width, height: L.nut_tham_ngo.height }}
+        className="absolute z-25 p-0 bg-transparent border-0 cursor-pointer active:scale-95 transition group"
+        title="Tham Ngộ (+350 Tu Vi)"
+      >
+        <img
+          src={getAssetUrl(L.nut_tham_ngo.path)}
+          alt="Tham Ngộ"
+          className="w-full h-full object-contain filter group-hover:brightness-110 group-hover:drop-shadow-[0_0_12px_rgba(245,158,11,0.7)] drop-shadow transition"
+        />
+      </button>
+
+      {/* 7. Khung Dự Kiến Thu Hoạch */}
+      <div
+        style={{ left: L.khung_du_kien.left, top: L.khung_du_kien.top, width: L.khung_du_kien.width, height: L.khung_du_kien.height }}
+        className="absolute z-20 drop-shadow-md pointer-events-none"
+      >
+        <img src={getAssetUrl(L.khung_du_kien.path)} alt="Khung Dự Kiến" className="w-full h-full object-fill" />
+      </div>
+
+      <div
+        style={{ left: L.dong_thu_hoach.left, top: L.dong_thu_hoach.top, width: L.dong_thu_hoach.width, height: L.dong_thu_hoach.height }}
+        className="absolute z-25 pointer-events-none drop-shadow"
+      >
+        <img src={getAssetUrl(L.dong_thu_hoach.path)} alt="Dòng Thu Hoạch" className="w-full h-full object-contain" />
       </div>
     </div>
   );

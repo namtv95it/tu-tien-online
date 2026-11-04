@@ -4,7 +4,10 @@
 export const getAssetUrl = (path: string): string => {
   const base = import.meta.env.BASE_URL || '/';
   const cleanBase = base.endsWith('/') ? base : `${base}/`;
-  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  let cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  if (!cleanPath.startsWith('images/') && !cleanPath.startsWith('design/')) {
+    cleanPath = `images/${cleanPath}`;
+  }
   return `${cleanBase}${cleanPath}`;
 };
 

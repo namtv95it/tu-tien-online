@@ -1,10 +1,12 @@
 import React from 'react';
 import { useGameStore } from '../../store/gameStore';
-import { Sparkles, Backpack, Save, Compass } from 'lucide-react';
+import { Sparkles, Backpack, Save, Compass, Hammer, Sprout, Flame } from 'lucide-react';
 
 export const HUD: React.FC = () => {
   const character = useGameStore((state) => state.character);
+  const isBuildMode = useGameStore((state) => state.isBuildMode);
   const toggleMeditation = useGameStore((state) => state.toggleMeditation);
+  const toggleBuildMode = useGameStore((state) => state.toggleBuildMode);
   const attemptBreakthrough = useGameStore((state) => state.attemptBreakthrough);
   const setNotification = useGameStore((state) => state.setNotification);
   const setActiveTab = useGameStore((state) => state.setActiveTab);
@@ -119,52 +121,80 @@ export const HUD: React.FC = () => {
       </div>
 
       {/* Bottom Area: Controls & Action Bar */}
-      <div className="flex flex-col md:flex-row justify-between items-end gap-3">
-        {/* Controls Guide */}
-        <div className="pointer-events-auto bg-slate-950/70 border border-slate-800 text-slate-400 text-[11px] p-2.5 rounded-lg backdrop-blur">
-          <div className="font-semibold text-slate-300 mb-1 flex items-center gap-1">
-            <Compass className="w-3.5 h-3.5 text-cyan-400" /> Thao Tác Phím
+      {!isBuildMode && (
+        <div className="flex flex-col md:flex-row justify-between items-end gap-3">
+          {/* Controls Guide */}
+          <div className="pointer-events-auto bg-slate-950/70 border border-slate-800 text-slate-400 text-[11px] p-2.5 rounded-lg backdrop-blur">
+            <div className="font-semibold text-slate-300 mb-1 flex items-center gap-1">
+              <Compass className="w-3.5 h-3.5 text-cyan-400" /> Thao Tác Phím
+            </div>
+            <div><kbd className="px-1 py-0.5 bg-slate-800 text-slate-200 rounded">W A S D</kbd> Di chuyển</div>
+            <div><kbd className="px-1 py-0.5 bg-slate-800 text-slate-200 rounded">Shift</kbd> Chạy nhanh</div>
+            <div><kbd className="px-1 py-0.5 bg-slate-800 text-slate-200 rounded">Click 3D</kbd> Bồ Đoàn / Linh Điền / Đan Lô</div>
           </div>
-          <div><kbd className="px-1 py-0.5 bg-slate-800 text-slate-200 rounded">W A S D</kbd> Di chuyển</div>
-          <div><kbd className="px-1 py-0.5 bg-slate-800 text-slate-200 rounded">Shift</kbd> Chạy nhanh</div>
-          <div><kbd className="px-1 py-0.5 bg-slate-800 text-slate-200 rounded">Click Bồ Đoàn</kbd> Tọa thiền / Thu công</div>
+
+          {/* Action Buttons */}
+          <div className="pointer-events-auto flex flex-wrap items-center gap-2">
+            {/* Tọa thiền Button */}
+            <button
+              onClick={toggleMeditation}
+              className={`flex items-center gap-2 px-3.5 py-2.5 rounded-lg border text-xs md:text-sm font-medium transition shadow-md ${
+                character.isMeditating
+                  ? 'bg-cyan-600/30 border-cyan-400 text-cyan-200 hover:bg-cyan-600/40'
+                  : 'xianxia-panel text-yellow-300 hover:border-yellow-400'
+              }`}
+            >
+              <span className="text-base">🧘</span>
+              {character.isMeditating ? 'Thu Công' : 'Tọa Thiền'}
+            </button>
+
+            {/* Linh Điền Button */}
+            <button
+              onClick={() => setActiveTab('garden')}
+              className="flex items-center gap-1.5 px-3 py-2.5 rounded-lg xianxia-panel text-emerald-300 hover:border-emerald-400 text-xs md:text-sm font-medium transition shadow-md"
+            >
+              <Sprout className="w-4 h-4 text-emerald-400" />
+              Linh Điền
+            </button>
+
+            {/* Lò Đan Button */}
+            <button
+              onClick={() => setActiveTab('alchemy')}
+              className="flex items-center gap-1.5 px-3 py-2.5 rounded-lg xianxia-panel text-orange-300 hover:border-orange-400 text-xs md:text-sm font-medium transition shadow-md"
+            >
+              <Flame className="w-4 h-4 text-orange-400" />
+              Lò Đan
+            </button>
+
+            {/* Kiến Thiết Động Phủ */}
+            <button
+              onClick={toggleBuildMode}
+              className="flex items-center gap-1.5 px-3 py-2.5 rounded-lg xianxia-panel text-yellow-300 hover:border-yellow-400 text-xs md:text-sm font-medium transition shadow-md"
+            >
+              <Hammer className="w-4 h-4 text-yellow-400" />
+              Kiến Thiết
+            </button>
+
+            {/* Inventory Button */}
+            <button
+              onClick={() => setActiveTab('inventory')}
+              className="flex items-center gap-1.5 px-3 py-2.5 rounded-lg xianxia-panel text-slate-200 hover:border-yellow-400 text-xs md:text-sm font-medium transition shadow-md"
+            >
+              <Backpack className="w-4 h-4 text-emerald-400" />
+              Túi Trữ Vật
+            </button>
+
+            {/* Save/Load Button */}
+            <button
+              onClick={() => setActiveTab('abode')}
+              className="flex items-center px-3 py-2.5 rounded-lg xianxia-panel text-slate-300 hover:border-yellow-400 text-xs md:text-sm font-medium transition shadow-md"
+              title="Lưu trữ & Khôi phục dữ liệu"
+            >
+              <Save className="w-4 h-4 text-yellow-400" />
+            </button>
+          </div>
         </div>
-
-        {/* Action Buttons */}
-        <div className="pointer-events-auto flex items-center gap-2.5">
-          {/* Tọa thiền Button */}
-          <button
-            onClick={toggleMeditation}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-lg border text-sm font-medium transition shadow-md ${
-              character.isMeditating
-                ? 'bg-cyan-600/30 border-cyan-400 text-cyan-200 hover:bg-cyan-600/40'
-                : 'xianxia-panel text-yellow-300 hover:border-yellow-400'
-            }`}
-          >
-            <span className="text-base">🧘</span>
-            {character.isMeditating ? 'Thu Công (Đứng Dậy)' : 'Tọa Thiền Tụ Khí'}
-          </button>
-
-          {/* Inventory Button */}
-          <button
-            onClick={() => setActiveTab('inventory')}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-lg xianxia-panel text-slate-200 hover:border-yellow-400 text-sm font-medium transition shadow-md"
-          >
-            <Backpack className="w-4 h-4 text-emerald-400" />
-            Túi Trữ Vật
-          </button>
-
-          {/* Save/Load Button */}
-          <button
-            onClick={() => setActiveTab('abode')}
-            className="flex items-center gap-2 px-3 py-2.5 rounded-lg xianxia-panel text-slate-300 hover:border-yellow-400 text-sm font-medium transition shadow-md"
-            title="Lưu trữ & Khôi phục dữ liệu"
-          >
-            <Save className="w-4 h-4 text-yellow-400" />
-          </button>
-        </div>
-      </div>
+      )}
     </div>
   );
 };
-

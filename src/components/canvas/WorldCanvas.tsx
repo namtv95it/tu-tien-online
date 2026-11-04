@@ -4,6 +4,9 @@ import { Sky } from '@react-three/drei';
 import { Terrain } from './Terrain';
 import { Player } from './Player';
 import { MeditationSpot } from './MeditationSpot';
+import { GardenPlot3D } from './GardenPlot3D';
+import { AbodeObjects3D } from './AbodeObjects3D';
+import { BuildGridOverlay } from './BuildGridOverlay';
 
 export const WorldCanvas: React.FC = () => {
   return (
@@ -52,9 +55,11 @@ export const WorldCanvas: React.FC = () => {
         {/* World Components */}
         <Terrain />
         <MeditationSpot />
+        <GardenPlot3D />
+        <AbodeObjects3D />
+        <BuildGridOverlay />
         <Player />
       </Canvas>
     </div>
   );
 };
-

@@ -4,6 +4,9 @@ import { HUD } from './components/ui/HUD';
 import { Notification } from './components/ui/Notification';
 import { InventoryModal } from './components/ui/InventoryModal';
 import { SaveModal } from './components/ui/SaveModal';
+import { GardenModal } from './components/ui/GardenModal';
+import { AlchemyModal } from './components/ui/AlchemyModal';
+import { BuildModePanel } from './components/ui/BuildModePanel';
 import { useGameStore } from './store/gameStore';
 
 export const App: React.FC = () => {
@@ -26,9 +29,11 @@ export const App: React.FC = () => {
       <Notification />
       <InventoryModal />
       <SaveModal />
+      <GardenModal />
+      <AlchemyModal />
+      <BuildModePanel />
     </div>
   );
 };
 
 export default App;
-

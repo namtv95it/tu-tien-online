@@ -1,11 +1,11 @@
 import Dexie, { type Table } from 'dexie';
-import { CharacterState, InventoryItem, GardenPlot, AbodeObject } from '../types/game';
+import { CharacterState, InventoryItem, GardenPlot, PlacedAbodeObject } from '../types/game';
 
 export class TuTienDatabase extends Dexie {
   character!: Table<CharacterState, string>;
   inventory!: Table<InventoryItem, string>;
   garden!: Table<GardenPlot, number>;
-  abodeObjects!: Table<AbodeObject, string>;
+  abodeObjects!: Table<PlacedAbodeObject, string>;
 
   constructor() {
     super('TuTienOnlineDB');
@@ -19,4 +19,3 @@ export class TuTienDatabase extends Dexie {
 }
 
 export const db = new TuTienDatabase();
-

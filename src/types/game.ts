@@ -1,4 +1,4 @@
-// Types for character, realm, stats, garden, abode, alchemy based on GDD Phàm Đạo 3D
+// Types for 2D Mobile-First Tu Tiên Game
 
 export type RealmType = 'PHÀM NHÂN' | 'LUYỆN KHÍ';
 
@@ -20,6 +20,7 @@ export interface CharacterState {
   coins: number; // Linh thạch vụn
   lastOnlineTimestamp: number; // Cho lazy settlement ngoại tuyến
   isMeditating: boolean; // Đang tọa thiền
+  abodeTier: number; // 1: Nhà tranh, 2: Tiểu động phủ, 3: Linh phủ
 }
 
 export type ItemType = 'HERB' | 'PILL' | 'MATERIAL' | 'FURNITURE' | 'SEED';
@@ -33,14 +34,12 @@ export interface InventoryItem {
   quantity: number;
   description: string;
   quality?: QualityType;
-  icon?: string;
+  effectValue?: number; // e.g. +tu vi or +qi
 }
 
 export interface GardenPlot {
   id: number; // 0..11
   unlocked: boolean;
-  x: number;
-  z: number;
   seedId: string | null;
   seedName: string | null;
   plantedAt: number | null; // timestamp ms
@@ -50,28 +49,16 @@ export interface GardenPlot {
   harvestReady: boolean;
 }
 
-export interface AbodeObjectDef {
-  defId: string;
-  name: string;
-  category: 'FURNITURE' | 'FACILITY' | 'DECORATION';
-  description: string;
-  costCoins: number;
-  width: number;
-  depth: number;
-  height: number;
-}
-
-export interface PlacedAbodeObject {
+export interface AbodeFacility {
   id: string;
-  defId: string;
   name: string;
-  x: number;
-  y: number;
-  z: number;
-  rotationY: number;
+  description: string;
+  cost: number;
+  built: boolean;
+  buffDescription: string;
+  icon: string;
 }
 
-// Alchemy Recipe Definition
 export interface AlchemyRecipe {
   id: string;
   name: string;
@@ -94,3 +81,5 @@ export interface AlchemyBatchState {
   resultQuality: QualityType | 'HỎNG MẺ' | null;
   resultPillName: string | null;
 }
+
+export type MobileTab = 'cultivation' | 'garden' | 'alchemy' | 'abode' | 'inventory';

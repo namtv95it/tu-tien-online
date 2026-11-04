@@ -1,19 +1,19 @@
 import Dexie, { type Table } from 'dexie';
-import { CharacterState, InventoryItem, GardenPlot, PlacedAbodeObject } from '../types/game';
+import { CharacterState, InventoryItem, GardenPlot, AbodeFacility } from '../types/game';
 
 export class TuTienDatabase extends Dexie {
   character!: Table<CharacterState, string>;
   inventory!: Table<InventoryItem, string>;
   garden!: Table<GardenPlot, number>;
-  abodeObjects!: Table<PlacedAbodeObject, string>;
+  facilities!: Table<AbodeFacility, string>;
 
   constructor() {
-    super('TuTienOnlineDB');
+    super('TuTienOnlineDB_v2');
     this.version(1).stores({
       character: 'id',
       inventory: 'id, defId, type',
       garden: 'id',
-      abodeObjects: 'id',
+      facilities: 'id',
     });
   }
 }

@@ -1,0 +1,1764 @@
+[
+  {
+    "screen": "tu_luyen",
+    "name": "avatar_status",
+    "type": "crop",
+    "path": "tu_luyen/cat_nguyen_goc/avatar_status.png",
+    "bbox_original": [
+      4,
+      0,
+      392,
+      140
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "tu_luyen",
+    "name": "ngoc_bich",
+    "type": "crop",
+    "path": "tu_luyen/cat_nguyen_goc/ngoc_bich.png",
+    "bbox_original": [
+      386,
+      5,
+      564,
+      61
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "tu_luyen",
+    "name": "linh_thach",
+    "type": "crop",
+    "path": "tu_luyen/cat_nguyen_goc/linh_thach.png",
+    "bbox_original": [
+      567,
+      5,
+      746,
+      61
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "tu_luyen",
+    "name": "nguyen_bao",
+    "type": "crop",
+    "path": "tu_luyen/cat_nguyen_goc/nguyen_bao.png",
+    "bbox_original": [
+      750,
+      5,
+      930,
+      61
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "tu_luyen",
+    "name": "the_luc",
+    "type": "crop",
+    "path": "tu_luyen/cat_nguyen_goc/the_luc.png",
+    "bbox_original": [
+      663,
+      55,
+      928,
+      104
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "tu_luyen",
+    "name": "nut_thu",
+    "type": "crop",
+    "path": "tu_luyen/cat_nguyen_goc/nut_thu.png",
+    "bbox_original": [
+      702,
+      104,
+      777,
+      181
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "tu_luyen",
+    "name": "nut_thong_bao",
+    "type": "crop",
+    "path": "tu_luyen/cat_nguyen_goc/nut_thong_bao.png",
+    "bbox_original": [
+      778,
+      104,
+      858,
+      181
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "tu_luyen",
+    "name": "nut_cai_dat",
+    "type": "crop",
+    "path": "tu_luyen/cat_nguyen_goc/nut_cai_dat.png",
+    "bbox_original": [
+      858,
+      104,
+      932,
+      181
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "tu_luyen",
+    "name": "nav_dong_phu",
+    "type": "crop",
+    "path": "tu_luyen/cat_nguyen_goc/nav_dong_phu.png",
+    "bbox_original": [
+      5,
+      1481,
+      193,
+      1667
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "tu_luyen",
+    "name": "nav_tu_luyen",
+    "type": "crop",
+    "path": "tu_luyen/cat_nguyen_goc/nav_tu_luyen.png",
+    "bbox_original": [
+      189,
+      1481,
+      381,
+      1667
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "tu_luyen",
+    "name": "nav_luyen_dan",
+    "type": "crop",
+    "path": "tu_luyen/cat_nguyen_goc/nav_luyen_dan.png",
+    "bbox_original": [
+      374,
+      1481,
+      567,
+      1667
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "tu_luyen",
+    "name": "nav_linh_dien",
+    "type": "crop",
+    "path": "tu_luyen/cat_nguyen_goc/nav_linh_dien.png",
+    "bbox_original": [
+      563,
+      1481,
+      754,
+      1667
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "tu_luyen",
+    "name": "nav_phuong_thi",
+    "type": "crop",
+    "path": "tu_luyen/cat_nguyen_goc/nav_phuong_thi.png",
+    "bbox_original": [
+      750,
+      1481,
+      938,
+      1667
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "tu_luyen",
+    "name": "tieu_de",
+    "type": "crop",
+    "path": "tu_luyen/cat_nguyen_goc/tieu_de.png",
+    "bbox_original": [
+      290,
+      120,
+      690,
+      204
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "tu_luyen",
+    "name": "nhan_vat_thien_dinh",
+    "type": "crop",
+    "path": "tu_luyen/cat_nguyen_goc/nhan_vat_thien_dinh.png",
+    "bbox_original": [
+      245,
+      315,
+      714,
+      754
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "tu_luyen",
+    "name": "khung_cong_phap",
+    "type": "crop",
+    "path": "tu_luyen/cat_nguyen_goc/khung_cong_phap.png",
+    "bbox_original": [
+      50,
+      748,
+      889,
+      884
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "tu_luyen",
+    "name": "icon_cong_phap",
+    "type": "crop",
+    "path": "tu_luyen/cat_nguyen_goc/icon_cong_phap.png",
+    "bbox_original": [
+      106,
+      757,
+      239,
+      874
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "tu_luyen",
+    "name": "nut_doi_cong_phap",
+    "type": "crop",
+    "path": "tu_luyen/cat_nguyen_goc/nut_doi_cong_phap.png",
+    "bbox_original": [
+      661,
+      787,
+      875,
+      852
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "tu_luyen",
+    "name": "khung_tu_vi_dot_pha",
+    "type": "crop",
+    "path": "tu_luyen/cat_nguyen_goc/khung_tu_vi_dot_pha.png",
+    "bbox_original": [
+      50,
+      892,
+      888,
+      1036
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "tu_luyen",
+    "name": "thanh_tu_vi",
+    "type": "crop",
+    "path": "tu_luyen/cat_nguyen_goc/thanh_tu_vi.png",
+    "bbox_original": [
+      205,
+      938,
+      835,
+      976
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "tu_luyen",
+    "name": "nut_be_quan",
+    "type": "crop",
+    "path": "tu_luyen/cat_nguyen_goc/nut_be_quan.png",
+    "bbox_original": [
+      88,
+      1035,
+      290,
+      1245
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "tu_luyen",
+    "name": "nut_van_khi",
+    "type": "crop",
+    "path": "tu_luyen/cat_nguyen_goc/nut_van_khi.png",
+    "bbox_original": [
+      348,
+      1035,
+      578,
+      1245
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "tu_luyen",
+    "name": "nut_tham_ngo",
+    "type": "crop",
+    "path": "tu_luyen/cat_nguyen_goc/nut_tham_ngo.png",
+    "bbox_original": [
+      639,
+      1035,
+      855,
+      1245
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "tu_luyen",
+    "name": "khung_du_kien",
+    "type": "crop",
+    "path": "tu_luyen/cat_nguyen_goc/khung_du_kien.png",
+    "bbox_original": [
+      49,
+      1299,
+      887,
+      1442
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "tu_luyen",
+    "name": "dong_thu_hoach",
+    "type": "crop",
+    "path": "tu_luyen/cat_nguyen_goc/dong_thu_hoach.png",
+    "bbox_original": [
+      105,
+      1352,
+      839,
+      1419
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "linh_dien",
+    "name": "avatar_status",
+    "type": "crop",
+    "path": "linh_dien/cat_nguyen_goc/avatar_status.png",
+    "bbox_original": [
+      4,
+      0,
+      392,
+      140
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "linh_dien",
+    "name": "ngoc_bich",
+    "type": "crop",
+    "path": "linh_dien/cat_nguyen_goc/ngoc_bich.png",
+    "bbox_original": [
+      386,
+      5,
+      564,
+      61
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "linh_dien",
+    "name": "linh_thach",
+    "type": "crop",
+    "path": "linh_dien/cat_nguyen_goc/linh_thach.png",
+    "bbox_original": [
+      567,
+      5,
+      746,
+      61
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "linh_dien",
+    "name": "nguyen_bao",
+    "type": "crop",
+    "path": "linh_dien/cat_nguyen_goc/nguyen_bao.png",
+    "bbox_original": [
+      750,
+      5,
+      930,
+      61
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "linh_dien",
+    "name": "the_luc",
+    "type": "crop",
+    "path": "linh_dien/cat_nguyen_goc/the_luc.png",
+    "bbox_original": [
+      663,
+      55,
+      928,
+      104
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "linh_dien",
+    "name": "nut_thu",
+    "type": "crop",
+    "path": "linh_dien/cat_nguyen_goc/nut_thu.png",
+    "bbox_original": [
+      702,
+      104,
+      777,
+      181
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "linh_dien",
+    "name": "nut_thong_bao",
+    "type": "crop",
+    "path": "linh_dien/cat_nguyen_goc/nut_thong_bao.png",
+    "bbox_original": [
+      778,
+      104,
+      858,
+      181
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "linh_dien",
+    "name": "nut_cai_dat",
+    "type": "crop",
+    "path": "linh_dien/cat_nguyen_goc/nut_cai_dat.png",
+    "bbox_original": [
+      858,
+      104,
+      932,
+      181
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "linh_dien",
+    "name": "nav_dong_phu",
+    "type": "crop",
+    "path": "linh_dien/cat_nguyen_goc/nav_dong_phu.png",
+    "bbox_original": [
+      5,
+      1481,
+      193,
+      1667
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "linh_dien",
+    "name": "nav_tu_luyen",
+    "type": "crop",
+    "path": "linh_dien/cat_nguyen_goc/nav_tu_luyen.png",
+    "bbox_original": [
+      189,
+      1481,
+      381,
+      1667
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "linh_dien",
+    "name": "nav_luyen_dan",
+    "type": "crop",
+    "path": "linh_dien/cat_nguyen_goc/nav_luyen_dan.png",
+    "bbox_original": [
+      374,
+      1481,
+      567,
+      1667
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "linh_dien",
+    "name": "nav_linh_dien",
+    "type": "crop",
+    "path": "linh_dien/cat_nguyen_goc/nav_linh_dien.png",
+    "bbox_original": [
+      563,
+      1481,
+      754,
+      1667
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "linh_dien",
+    "name": "nav_phuong_thi",
+    "type": "crop",
+    "path": "linh_dien/cat_nguyen_goc/nav_phuong_thi.png",
+    "bbox_original": [
+      750,
+      1481,
+      938,
+      1667
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "linh_dien",
+    "name": "khung_nhiem_vu",
+    "type": "crop",
+    "path": "linh_dien/cat_nguyen_goc/khung_nhiem_vu.png",
+    "bbox_original": [
+      8,
+      158,
+      310,
+      396
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "linh_dien",
+    "name": "banner_su_kien",
+    "type": "crop",
+    "path": "linh_dien/cat_nguyen_goc/banner_su_kien.png",
+    "bbox_original": [
+      8,
+      397,
+      290,
+      505
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "linh_dien",
+    "name": "khung_thong_tin_linh_thao",
+    "type": "crop",
+    "path": "linh_dien/cat_nguyen_goc/khung_thong_tin_linh_thao.png",
+    "bbox_original": [
+      25,
+      1056,
+      916,
+      1441
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "linh_dien",
+    "name": "anh_linh_thao",
+    "type": "crop",
+    "path": "linh_dien/cat_nguyen_goc/anh_linh_thao.png",
+    "bbox_original": [
+      44,
+      1095,
+      284,
+      1325
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "linh_dien",
+    "name": "bang_trang_thai_cay",
+    "type": "crop",
+    "path": "linh_dien/cat_nguyen_goc/bang_trang_thai_cay.png",
+    "bbox_original": [
+      298,
+      1073,
+      889,
+      1325
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "linh_dien",
+    "name": "nut_tuoi",
+    "type": "crop",
+    "path": "linh_dien/cat_nguyen_goc/nut_tuoi.png",
+    "bbox_original": [
+      47,
+      1332,
+      307,
+      1413
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "linh_dien",
+    "name": "nut_bon_linh_thach",
+    "type": "crop",
+    "path": "linh_dien/cat_nguyen_goc/nut_bon_linh_thach.png",
+    "bbox_original": [
+      313,
+      1332,
+      612,
+      1413
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "linh_dien",
+    "name": "nut_thu_hoach",
+    "type": "crop",
+    "path": "linh_dien/cat_nguyen_goc/nut_thu_hoach.png",
+    "bbox_original": [
+      625,
+      1332,
+      884,
+      1413
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "linh_dien",
+    "name": "cay_giong",
+    "type": "crop",
+    "path": "linh_dien/cat_nguyen_goc/cay_giong.png",
+    "bbox_original": [
+      273,
+      531,
+      472,
+      669
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "linh_dien",
+    "name": "cay_hoa_tim",
+    "type": "crop",
+    "path": "linh_dien/cat_nguyen_goc/cay_hoa_tim.png",
+    "bbox_original": [
+      80,
+      543,
+      291,
+      704
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "linh_dien",
+    "name": "cay_qua_do",
+    "type": "crop",
+    "path": "linh_dien/cat_nguyen_goc/cay_qua_do.png",
+    "bbox_original": [
+      477,
+      529,
+      659,
+      696
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "linh_dien",
+    "name": "cay_nhan_sam",
+    "type": "crop",
+    "path": "linh_dien/cat_nguyen_goc/cay_nhan_sam.png",
+    "bbox_original": [
+      666,
+      528,
+      855,
+      701
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "linh_dien",
+    "name": "cay_hoa_xanh",
+    "type": "crop",
+    "path": "linh_dien/cat_nguyen_goc/cay_hoa_xanh.png",
+    "bbox_original": [
+      74,
+      698,
+      268,
+      882
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "linh_dien",
+    "name": "cay_dang_tuoi",
+    "type": "crop",
+    "path": "linh_dien/cat_nguyen_goc/cay_dang_tuoi.png",
+    "bbox_original": [
+      264,
+      690,
+      471,
+      902
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "linh_dien",
+    "name": "cay_la_xanh",
+    "type": "crop",
+    "path": "linh_dien/cat_nguyen_goc/cay_la_xanh.png",
+    "bbox_original": [
+      480,
+      704,
+      649,
+      897
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "linh_dien",
+    "name": "cay_nhan_sam_2",
+    "type": "crop",
+    "path": "linh_dien/cat_nguyen_goc/cay_nhan_sam_2.png",
+    "bbox_original": [
+      655,
+      713,
+      844,
+      906
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "linh_dien",
+    "name": "nhan_vat_tuoi_cay",
+    "type": "crop",
+    "path": "linh_dien/cat_nguyen_goc/nhan_vat_tuoi_cay.png",
+    "bbox_original": [
+      221,
+      647,
+      406,
+      890
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "luyen_dan",
+    "name": "avatar_status",
+    "type": "crop",
+    "path": "luyen_dan/cat_nguyen_goc/avatar_status.png",
+    "bbox_original": [
+      4,
+      0,
+      392,
+      140
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "luyen_dan",
+    "name": "ngoc_bich",
+    "type": "crop",
+    "path": "luyen_dan/cat_nguyen_goc/ngoc_bich.png",
+    "bbox_original": [
+      386,
+      5,
+      564,
+      61
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "luyen_dan",
+    "name": "linh_thach",
+    "type": "crop",
+    "path": "luyen_dan/cat_nguyen_goc/linh_thach.png",
+    "bbox_original": [
+      567,
+      5,
+      746,
+      61
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "luyen_dan",
+    "name": "nguyen_bao",
+    "type": "crop",
+    "path": "luyen_dan/cat_nguyen_goc/nguyen_bao.png",
+    "bbox_original": [
+      750,
+      5,
+      930,
+      61
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "luyen_dan",
+    "name": "the_luc",
+    "type": "crop",
+    "path": "luyen_dan/cat_nguyen_goc/the_luc.png",
+    "bbox_original": [
+      663,
+      55,
+      928,
+      104
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "luyen_dan",
+    "name": "nut_thu",
+    "type": "crop",
+    "path": "luyen_dan/cat_nguyen_goc/nut_thu.png",
+    "bbox_original": [
+      702,
+      104,
+      777,
+      181
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "luyen_dan",
+    "name": "nut_thong_bao",
+    "type": "crop",
+    "path": "luyen_dan/cat_nguyen_goc/nut_thong_bao.png",
+    "bbox_original": [
+      778,
+      104,
+      858,
+      181
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "luyen_dan",
+    "name": "nut_cai_dat",
+    "type": "crop",
+    "path": "luyen_dan/cat_nguyen_goc/nut_cai_dat.png",
+    "bbox_original": [
+      858,
+      104,
+      932,
+      181
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "luyen_dan",
+    "name": "nav_dong_phu",
+    "type": "crop",
+    "path": "luyen_dan/cat_nguyen_goc/nav_dong_phu.png",
+    "bbox_original": [
+      5,
+      1481,
+      193,
+      1667
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "luyen_dan",
+    "name": "nav_tu_luyen",
+    "type": "crop",
+    "path": "luyen_dan/cat_nguyen_goc/nav_tu_luyen.png",
+    "bbox_original": [
+      189,
+      1481,
+      381,
+      1667
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "luyen_dan",
+    "name": "nav_luyen_dan",
+    "type": "crop",
+    "path": "luyen_dan/cat_nguyen_goc/nav_luyen_dan.png",
+    "bbox_original": [
+      374,
+      1481,
+      567,
+      1667
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "luyen_dan",
+    "name": "nav_linh_dien",
+    "type": "crop",
+    "path": "luyen_dan/cat_nguyen_goc/nav_linh_dien.png",
+    "bbox_original": [
+      563,
+      1481,
+      754,
+      1667
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "luyen_dan",
+    "name": "nav_phuong_thi",
+    "type": "crop",
+    "path": "luyen_dan/cat_nguyen_goc/nav_phuong_thi.png",
+    "bbox_original": [
+      750,
+      1481,
+      938,
+      1667
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "luyen_dan",
+    "name": "tieu_de",
+    "type": "crop",
+    "path": "luyen_dan/cat_nguyen_goc/tieu_de.png",
+    "bbox_original": [
+      300,
+      101,
+      666,
+      181
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "luyen_dan",
+    "name": "danh_sach_dan_phuong",
+    "type": "crop",
+    "path": "luyen_dan/cat_nguyen_goc/danh_sach_dan_phuong.png",
+    "bbox_original": [
+      13,
+      145,
+      270,
+      563
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "luyen_dan",
+    "name": "lich_su_luyen_dan",
+    "type": "crop",
+    "path": "luyen_dan/cat_nguyen_goc/lich_su_luyen_dan.png",
+    "bbox_original": [
+      714,
+      197,
+      921,
+      352
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "luyen_dan",
+    "name": "lo_dan",
+    "type": "crop",
+    "path": "luyen_dan/cat_nguyen_goc/lo_dan.png",
+    "bbox_original": [
+      369,
+      200,
+      711,
+      609
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "luyen_dan",
+    "name": "nhan_vat_luyen_dan",
+    "type": "crop",
+    "path": "luyen_dan/cat_nguyen_goc/nhan_vat_luyen_dan.png",
+    "bbox_original": [
+      260,
+      386,
+      379,
+      620
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "luyen_dan",
+    "name": "khung_thong_tin_dan",
+    "type": "crop",
+    "path": "luyen_dan/cat_nguyen_goc/khung_thong_tin_dan.png",
+    "bbox_original": [
+      91,
+      645,
+      850,
+      810
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "luyen_dan",
+    "name": "icon_tu_khi_dan",
+    "type": "crop",
+    "path": "luyen_dan/cat_nguyen_goc/icon_tu_khi_dan.png",
+    "bbox_original": [
+      126,
+      658,
+      266,
+      790
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "luyen_dan",
+    "name": "khung_nguyen_lieu",
+    "type": "crop",
+    "path": "luyen_dan/cat_nguyen_goc/khung_nguyen_lieu.png",
+    "bbox_original": [
+      96,
+      806,
+      841,
+      1003
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "luyen_dan",
+    "name": "nguyen_lieu_nhan_sam",
+    "type": "crop",
+    "path": "luyen_dan/cat_nguyen_goc/nguyen_lieu_nhan_sam.png",
+    "bbox_original": [
+      156,
+      851,
+      284,
+      966
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "luyen_dan",
+    "name": "nguyen_lieu_hoa_tim",
+    "type": "crop",
+    "path": "luyen_dan/cat_nguyen_goc/nguyen_lieu_hoa_tim.png",
+    "bbox_original": [
+      332,
+      851,
+      458,
+      966
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "luyen_dan",
+    "name": "nguyen_lieu_linh_thach",
+    "type": "crop",
+    "path": "luyen_dan/cat_nguyen_goc/nguyen_lieu_linh_thach.png",
+    "bbox_original": [
+      511,
+      851,
+      624,
+      966
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "luyen_dan",
+    "name": "nguyen_lieu_linh_chi",
+    "type": "crop",
+    "path": "luyen_dan/cat_nguyen_goc/nguyen_lieu_linh_chi.png",
+    "bbox_original": [
+      685,
+      851,
+      807,
+      966
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "luyen_dan",
+    "name": "buoc_tinh_luyen",
+    "type": "crop",
+    "path": "luyen_dan/cat_nguyen_goc/buoc_tinh_luyen.png",
+    "bbox_original": [
+      156,
+      987,
+      308,
+      1122
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "luyen_dan",
+    "name": "buoc_dung_hop",
+    "type": "crop",
+    "path": "luyen_dan/cat_nguyen_goc/buoc_dung_hop.png",
+    "bbox_original": [
+      393,
+      987,
+      551,
+      1122
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "luyen_dan",
+    "name": "buoc_ngung_dan",
+    "type": "crop",
+    "path": "luyen_dan/cat_nguyen_goc/buoc_ngung_dan.png",
+    "bbox_original": [
+      630,
+      974,
+      798,
+      1124
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "luyen_dan",
+    "name": "thanh_cuong_do_lua",
+    "type": "crop",
+    "path": "luyen_dan/cat_nguyen_goc/thanh_cuong_do_lua.png",
+    "bbox_original": [
+      91,
+      1110,
+      850,
+      1202
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "luyen_dan",
+    "name": "khung_du_doan_pham_chat",
+    "type": "crop",
+    "path": "luyen_dan/cat_nguyen_goc/khung_du_doan_pham_chat.png",
+    "bbox_original": [
+      91,
+      1205,
+      852,
+      1350
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "luyen_dan",
+    "name": "nut_bat_dau_luyen_dan",
+    "type": "crop",
+    "path": "luyen_dan/cat_nguyen_goc/nut_bat_dau_luyen_dan.png",
+    "bbox_original": [
+      311,
+      1353,
+      618,
+      1449
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "luyen_dan",
+    "name": "so_lan_luyen",
+    "type": "crop",
+    "path": "luyen_dan/cat_nguyen_goc/so_lan_luyen.png",
+    "bbox_original": [
+      621,
+      1354,
+      859,
+      1438
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "avatar_status",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/avatar_status.png",
+    "bbox_original": [
+      4,
+      0,
+      392,
+      140
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "ngoc_bich",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/ngoc_bich.png",
+    "bbox_original": [
+      386,
+      5,
+      564,
+      61
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "linh_thach",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/linh_thach.png",
+    "bbox_original": [
+      567,
+      5,
+      746,
+      61
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "nguyen_bao",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/nguyen_bao.png",
+    "bbox_original": [
+      750,
+      5,
+      930,
+      61
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "the_luc",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/the_luc.png",
+    "bbox_original": [
+      663,
+      55,
+      928,
+      104
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "nut_thu",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/nut_thu.png",
+    "bbox_original": [
+      702,
+      104,
+      777,
+      181
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "nut_thong_bao",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/nut_thong_bao.png",
+    "bbox_original": [
+      778,
+      104,
+      858,
+      181
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "nut_cai_dat",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/nut_cai_dat.png",
+    "bbox_original": [
+      858,
+      104,
+      932,
+      181
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "nav_dong_phu",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/nav_dong_phu.png",
+    "bbox_original": [
+      5,
+      1481,
+      193,
+      1667
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "nav_tu_luyen",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/nav_tu_luyen.png",
+    "bbox_original": [
+      189,
+      1481,
+      381,
+      1667
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "nav_luyen_dan",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/nav_luyen_dan.png",
+    "bbox_original": [
+      374,
+      1481,
+      567,
+      1667
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "nav_linh_dien",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/nav_linh_dien.png",
+    "bbox_original": [
+      563,
+      1481,
+      754,
+      1667
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "nav_phuong_thi",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/nav_phuong_thi.png",
+    "bbox_original": [
+      750,
+      1481,
+      938,
+      1667
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "khung_nhiem_vu",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/khung_nhiem_vu.png",
+    "bbox_original": [
+      7,
+      158,
+      307,
+      390
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "banner_su_kien",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/banner_su_kien.png",
+    "bbox_original": [
+      7,
+      391,
+      291,
+      503
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "bien_phuong_thi",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/bien_phuong_thi.png",
+    "bbox_original": [
+      446,
+      289,
+      665,
+      396
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "bien_linh_thao_cac",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/bien_linh_thao_cac.png",
+    "bbox_original": [
+      106,
+      526,
+      347,
+      593
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "bien_phap_khi_duong",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/bien_phap_khi_duong.png",
+    "bbox_original": [
+      702,
+      527,
+      906,
+      595
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "bien_dan_duoc_cac",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/bien_dan_duoc_cac.png",
+    "bbox_original": [
+      98,
+      774,
+      331,
+      842
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "bien_cong_phap_phuong",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/bien_cong_phap_phuong.png",
+    "bbox_original": [
+      679,
+      778,
+      895,
+      851
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "nhan_vat_giua",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/nhan_vat_giua.png",
+    "bbox_original": [
+      330,
+      756,
+      464,
+      1041
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "shop_linh_thao",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/shop_linh_thao.png",
+    "bbox_original": [
+      20,
+      530,
+      376,
+      794
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "shop_phap_khi",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/shop_phap_khi.png",
+    "bbox_original": [
+      639,
+      523,
+      937,
+      803
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "shop_dan_duoc",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/shop_dan_duoc.png",
+    "bbox_original": [
+      28,
+      777,
+      364,
+      1161
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "shop_cong_phap",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/shop_cong_phap.png",
+    "bbox_original": [
+      653,
+      786,
+      929,
+      1158
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "khung_giao_dich",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/khung_giao_dich.png",
+    "bbox_original": [
+      9,
+      1162,
+      930,
+      1464
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "bang_danh_muc",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/bang_danh_muc.png",
+    "bbox_original": [
+      20,
+      1165,
+      451,
+      1460
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "bang_vat_pham_de_cu",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/bang_vat_pham_de_cu.png",
+    "bbox_original": [
+      452,
+      1165,
+      920,
+      1460
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "o_dan_duoc",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/o_dan_duoc.png",
+    "bbox_original": [
+      40,
+      1234,
+      229,
+      1346
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "o_linh_thao",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/o_linh_thao.png",
+    "bbox_original": [
+      238,
+      1234,
+      426,
+      1346
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "o_phap_khi",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/o_phap_khi.png",
+    "bbox_original": [
+      41,
+      1345,
+      232,
+      1447
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "o_cong_phap",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/o_cong_phap.png",
+    "bbox_original": [
+      237,
+      1345,
+      429,
+      1447
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "vat_pham_de_cu",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/vat_pham_de_cu.png",
+    "bbox_original": [
+      469,
+      1221,
+      911,
+      1436
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "phuong_thi",
+    "name": "nut_mua",
+    "type": "crop",
+    "path": "phuong_thi/cat_nguyen_goc/nut_mua.png",
+    "bbox_original": [
+      742,
+      1364,
+      883,
+      1431
+    ],
+    "note": "Cắt nguyên ảnh, nội dung/chữ vẫn giữ; khối có thể chứa nền vì ảnh gốc ghép lớp."
+  },
+  {
+    "screen": "dung_chung",
+    "name": "khung_nhiem_vu",
+    "type": "blank_template",
+    "path": "khung_trong_khong_text/khung_nhiem_vu.png",
+    "note": "Khung được dựng lại không chữ, nền ngoài trong suốt; không phải bản gốc nguyên pixel."
+  },
+  {
+    "screen": "dung_chung",
+    "name": "banner_su_kien",
+    "type": "blank_template",
+    "path": "khung_trong_khong_text/banner_su_kien.png",
+    "note": "Khung được dựng lại không chữ, nền ngoài trong suốt; không phải bản gốc nguyên pixel."
+  },
+  {
+    "screen": "dung_chung",
+    "name": "khung_thong_tin_nhan_vat",
+    "type": "blank_template",
+    "path": "khung_trong_khong_text/khung_thong_tin_nhan_vat.png",
+    "note": "Khung được dựng lại không chữ, nền ngoài trong suốt; không phải bản gốc nguyên pixel."
+  },
+  {
+    "screen": "dung_chung",
+    "name": "thanh_ngoc_bich",
+    "type": "blank_template",
+    "path": "khung_trong_khong_text/thanh_ngoc_bich.png",
+    "note": "Khung được dựng lại không chữ, nền ngoài trong suốt; không phải bản gốc nguyên pixel."
+  },
+  {
+    "screen": "dung_chung",
+    "name": "thanh_linh_thach",
+    "type": "blank_template",
+    "path": "khung_trong_khong_text/thanh_linh_thach.png",
+    "note": "Khung được dựng lại không chữ, nền ngoài trong suốt; không phải bản gốc nguyên pixel."
+  },
+  {
+    "screen": "dung_chung",
+    "name": "thanh_nguyen_bao",
+    "type": "blank_template",
+    "path": "khung_trong_khong_text/thanh_nguyen_bao.png",
+    "note": "Khung được dựng lại không chữ, nền ngoài trong suốt; không phải bản gốc nguyên pixel."
+  },
+  {
+    "screen": "dung_chung",
+    "name": "thanh_the_luc",
+    "type": "blank_template",
+    "path": "khung_trong_khong_text/thanh_the_luc.png",
+    "note": "Khung được dựng lại không chữ, nền ngoài trong suốt; không phải bản gốc nguyên pixel."
+  },
+  {
+    "screen": "dung_chung",
+    "name": "khung_cong_phap",
+    "type": "blank_template",
+    "path": "khung_trong_khong_text/khung_cong_phap.png",
+    "note": "Khung được dựng lại không chữ, nền ngoài trong suốt; không phải bản gốc nguyên pixel."
+  },
+  {
+    "screen": "dung_chung",
+    "name": "khung_tu_vi",
+    "type": "blank_template",
+    "path": "khung_trong_khong_text/khung_tu_vi.png",
+    "note": "Khung được dựng lại không chữ, nền ngoài trong suốt; không phải bản gốc nguyên pixel."
+  },
+  {
+    "screen": "dung_chung",
+    "name": "khung_du_kien",
+    "type": "blank_template",
+    "path": "khung_trong_khong_text/khung_du_kien.png",
+    "note": "Khung được dựng lại không chữ, nền ngoài trong suốt; không phải bản gốc nguyên pixel."
+  },
+  {
+    "screen": "dung_chung",
+    "name": "khung_thong_tin_linh_thao",
+    "type": "blank_template",
+    "path": "khung_trong_khong_text/khung_thong_tin_linh_thao.png",
+    "note": "Khung được dựng lại không chữ, nền ngoài trong suốt; không phải bản gốc nguyên pixel."
+  },
+  {
+    "screen": "dung_chung",
+    "name": "khung_thong_tin_dan",
+    "type": "blank_template",
+    "path": "khung_trong_khong_text/khung_thong_tin_dan.png",
+    "note": "Khung được dựng lại không chữ, nền ngoài trong suốt; không phải bản gốc nguyên pixel."
+  },
+  {
+    "screen": "dung_chung",
+    "name": "khung_nguyen_lieu",
+    "type": "blank_template",
+    "path": "khung_trong_khong_text/khung_nguyen_lieu.png",
+    "note": "Khung được dựng lại không chữ, nền ngoài trong suốt; không phải bản gốc nguyên pixel."
+  },
+  {
+    "screen": "dung_chung",
+    "name": "khung_du_doan_pham_chat",
+    "type": "blank_template",
+    "path": "khung_trong_khong_text/khung_du_doan_pham_chat.png",
+    "note": "Khung được dựng lại không chữ, nền ngoài trong suốt; không phải bản gốc nguyên pixel."
+  },
+  {
+    "screen": "dung_chung",
+    "name": "khung_giao_dich",
+    "type": "blank_template",
+    "path": "khung_trong_khong_text/khung_giao_dich.png",
+    "note": "Khung được dựng lại không chữ, nền ngoài trong suốt; không phải bản gốc nguyên pixel."
+  },
+  {
+    "screen": "dung_chung",
+    "name": "khung_danh_muc",
+    "type": "blank_template",
+    "path": "khung_trong_khong_text/khung_danh_muc.png",
+    "note": "Khung được dựng lại không chữ, nền ngoài trong suốt; không phải bản gốc nguyên pixel."
+  },
+  {
+    "screen": "dung_chung",
+    "name": "khung_vat_pham_de_cu",
+    "type": "blank_template",
+    "path": "khung_trong_khong_text/khung_vat_pham_de_cu.png",
+    "note": "Khung được dựng lại không chữ, nền ngoài trong suốt; không phải bản gốc nguyên pixel."
+  },
+  {
+    "screen": "dung_chung",
+    "name": "khung_popup",
+    "type": "blank_template",
+    "path": "khung_trong_khong_text/khung_popup.png",
+    "note": "Khung được dựng lại không chữ, nền ngoài trong suốt; không phải bản gốc nguyên pixel."
+  },
+  {
+    "screen": "dung_chung",
+    "name": "khung_danh_sach",
+    "type": "blank_template",
+    "path": "khung_trong_khong_text/khung_danh_sach.png",
+    "note": "Khung được dựng lại không chữ, nền ngoài trong suốt; không phải bản gốc nguyên pixel."
+  },
+  {
+    "screen": "dung_chung",
+    "name": "khung_lich_su",
+    "type": "blank_template",
+    "path": "khung_trong_khong_text/khung_lich_su.png",
+    "note": "Khung được dựng lại không chữ, nền ngoài trong suốt; không phải bản gốc nguyên pixel."
+  },
+  {
+    "screen": "dung_chung",
+    "name": "nut_chuc_nang",
+    "type": "blank_template",
+    "path": "khung_trong_khong_text/nut_chuc_nang.png",
+    "note": "Khung được dựng lại không chữ, nền ngoài trong suốt; không phải bản gốc nguyên pixel."
+  },
+  {
+    "screen": "dung_chung",
+    "name": "o_vat_pham",
+    "type": "blank_template",
+    "path": "khung_trong_khong_text/o_vat_pham.png",
+    "note": "Khung được dựng lại không chữ, nền ngoài trong suốt; không phải bản gốc nguyên pixel."
+  },
+  {
+    "screen": "dung_chung",
+    "name": "bang_ten",
+    "type": "blank_template",
+    "path": "khung_trong_khong_text/bang_ten.png",
+    "note": "Khung được dựng lại không chữ, nền ngoài trong suốt; không phải bản gốc nguyên pixel."
+  },
+  {
+    "screen": "dung_chung",
+    "name": "ngoc_bich",
+    "type": "icon",
+    "path": "bieu_tuong_tien_te/ngoc_bich.png",
+    "note": "Cắt vùng biểu tượng và loại nền ngoài hình elip xấp xỉ."
+  },
+  {
+    "screen": "dung_chung",
+    "name": "linh_thach",
+    "type": "icon",
+    "path": "bieu_tuong_tien_te/linh_thach.png",
+    "note": "Cắt vùng biểu tượng và loại nền ngoài hình elip xấp xỉ."
+  },
+  {
+    "screen": "dung_chung",
+    "name": "nguyen_bao",
+    "type": "icon",
+    "path": "bieu_tuong_tien_te/nguyen_bao.png",
+    "note": "Cắt vùng biểu tượng và loại nền ngoài hình elip xấp xỉ."
+  },
+  {
+    "screen": "dung_chung",
+    "name": "the_luc",
+    "type": "icon",
+    "path": "bieu_tuong_tien_te/the_luc.png",
+    "note": "Cắt vùng biểu tượng và loại nền ngoài hình elip xấp xỉ."
+  }
+]

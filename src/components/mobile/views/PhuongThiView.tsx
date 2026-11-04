@@ -1,5 +1,6 @@
 import React from 'react';
 import { useGameStore } from '../../../store/gameStore';
+import { ASSETS } from '../../../utils/assets';
 
 export const PhuongThiView: React.FC = () => {
   const setMarketCategory = useGameStore((state) => state.setMarketCategory);
@@ -8,9 +9,9 @@ export const PhuongThiView: React.FC = () => {
 
   return (
     <div className="relative w-full aspect-[9/16] min-h-[700px] select-none text-slate-100 overflow-hidden shadow-inner">
-      {/* 1. High-Res Design Artwork Background */}
+      {/* 1. High-Res Clean Background */}
       <img
-        src={`${import.meta.env.BASE_URL}design/phuong-thi.png`}
+        src={ASSETS.backgrounds.phuongThi}
         alt="Phường Thị"
         className="absolute inset-0 w-full h-full object-cover object-top pointer-events-none"
       />
@@ -83,9 +84,15 @@ export const PhuongThiView: React.FC = () => {
       {/* 4. Buy Button for Featured Item: "Đan Trúc Cơ" */}
       <button
         onClick={buyFeaturedItem}
-        className="absolute bottom-[9.5%] right-[6%] w-[20%] h-[4.5%] z-20 rounded-full opacity-0 hover:opacity-25 bg-amber-400 cursor-pointer active:scale-95 shadow-md"
+        className="absolute bottom-[9%] right-[6%] w-[21%] h-[5%] z-20 flex items-center justify-center p-0 bg-transparent border-0 cursor-pointer active:scale-95 transition group"
         title="Mua Đan Trúc Cơ (48.000 Linh Thạch)"
-      />
+      >
+        <img
+          src={ASSETS.phuongThi.nutMua}
+          alt="Mua"
+          className="w-full h-full object-contain filter group-hover:brightness-110 group-hover:drop-shadow-[0_0_8px_rgba(245,158,11,0.6)] transition"
+        />
+      </button>
     </div>
   );
 };

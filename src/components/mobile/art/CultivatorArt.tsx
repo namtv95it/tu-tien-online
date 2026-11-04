@@ -107,3 +107,4 @@ export const CultivatorArt: React.FC<CultivatorArtProps> = ({ isMeditating }) =>
     </div>
   );
 };
+

@@ -1,85 +1,43 @@
-// Types for 2D Mobile-First Tu Tiên Game
+// Types for 2D Mobile-First Tu Tiên Game matching assets/design
 
-export type RealmType = 'PHÀM NHÂN' | 'LUYỆN KHÍ';
+export type MobileTab = 'dong-phu' | 'tu-luyen' | 'luyen-dan' | 'linh-dien' | 'phuong-thi';
 
 export interface CharacterState {
   id: string;
   name: string;
-  realm: RealmType;
-  realmLevel: number; // 0 for Phàm Nhân, 1..3 for Luyện Khí 1..3
-  cultivation: number; // Tiến trình tu vi hiện tại
-  cultivationThreshold: number; // Ngưỡng đột phá tầng hiện tại
-  qi: number; // Linh lực hiện tại
-  maxQi: number; // Dung lượng linh lực
-  meridianStability: number; // 0 - 100 Ổn định kinh mạch
-  mindState: number; // 0 - 100 Tâm cảnh
-  spiritSense: number; // Thần thức
-  fatigue: number; // 0 - 100 Mệt mỏi
-  affinity: 'WOOD' | 'WATER' | 'BALANCED'; // Linh căn
-  alchemyMastery: number; // Kinh nghiệm đan đạo
-  coins: number; // Linh thạch vụn
-  lastOnlineTimestamp: number; // Cho lazy settlement ngoại tuyến
-  isMeditating: boolean; // Đang tọa thiền
-  abodeTier: number; // 1: Nhà tranh, 2: Tiểu động phủ, 3: Linh phủ
+  level: number;
+  realm: string; // "Luyện Khí"
+  realmLevel: number; // 2
+  cultivation: number; // 7200
+  cultivationThreshold: number; // 12000
+  stamina: number; // 120
+  maxStamina: number; // 120
+  spiritStones: number; // 56420 (Bạc / Linh thạch)
+  jadeTokens: number; // 1280 (Ngọc biếc)
+  goldIngots: number; // 320 (Kim nguyên bảo)
+  activeTechnique: string; // "Trường Xuân Công"
+  isMeditating: boolean;
+  lastOnlineTimestamp: number;
 }
 
-export type ItemType = 'HERB' | 'PILL' | 'MATERIAL' | 'FURNITURE' | 'SEED';
-export type QualityType = 'HẠ PHẨM' | 'TRUNG PHẨM' | 'THƯỢNG PHẨM' | 'CỰC PHẨM';
-
-export interface InventoryItem {
-  id: string;
-  defId: string;
-  name: string;
-  type: ItemType;
-  quantity: number;
-  description: string;
-  quality?: QualityType;
-  effectValue?: number; // e.g. +tu vi or +qi
-}
-
-export interface GardenPlot {
-  id: number; // 0..11
-  unlocked: boolean;
-  seedId: string | null;
-  seedName: string | null;
-  plantedAt: number | null; // timestamp ms
-  growthDuration: number; // seconds needed
-  progress: number; // 0..100%
-  moisture: number; // 0..100
-  harvestReady: boolean;
-}
-
-export interface AbodeFacility {
+export interface MarketItem {
   id: string;
   name: string;
   description: string;
-  cost: number;
-  built: boolean;
-  buffDescription: string;
+  originalPrice: number;
+  discountPrice: number;
+  category: 'PILL' | 'HERB' | 'WEAPON' | 'MANUAL';
   icon: string;
+  bought: boolean;
 }
 
-export interface AlchemyRecipe {
+export interface AlchemyRecipeDef {
   id: string;
   name: string;
-  targetPillDefId: string;
+  realmRequirement: string;
   description: string;
-  requiredMastery: number;
-  ingredients: { defId: string; name: string; quantity: number }[];
-  optimalFireTemp: number; // 0 - 100 (vùng nhiệt tối ưu)
-  fireTolerance: number; // độ rộng vùng an toàn (+/-)
+  effect: string;
+  successRate: number; // e.g. 85%
+  fireLevel: number; // 1..10
+  ingredients: { name: string; required: number; current: number; icon: string }[];
 }
-
-export interface AlchemyBatchState {
-  active: boolean;
-  recipe: AlchemyRecipe | null;
-  phase: 'PREPARATION' | 'HEATING' | 'CONDENSATION' | 'RESULT';
-  currentTemp: number; // 0 - 100
-  targetTemp: number;
-  heatScore: number; // 0 - 100
-  stability: number; // 0 - 100
-  resultQuality: QualityType | 'HỎNG MẺ' | null;
-  resultPillName: string | null;
-}
-
-export type MobileTab = 'cultivation' | 'garden' | 'alchemy' | 'abode' | 'inventory';

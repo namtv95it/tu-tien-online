@@ -1,13 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import { MobileHeader } from './components/mobile/MobileHeader';
-import { Scene2D } from './components/mobile/Scene2D';
 import { BottomNav } from './components/mobile/BottomNav';
 import { NotificationToast } from './components/mobile/NotificationToast';
-import { CultivationTab } from './components/mobile/tabs/CultivationTab';
-import { GardenTab } from './components/mobile/tabs/GardenTab';
-import { AlchemyTab } from './components/mobile/tabs/AlchemyTab';
-import { AbodeTab } from './components/mobile/tabs/AbodeTab';
-import { InventoryTab } from './components/mobile/tabs/InventoryTab';
+import { TuLuyenView } from './components/mobile/views/TuLuyenView';
+import { DongPhuView } from './components/mobile/views/DongPhuView';
+import { LinhDienView } from './components/mobile/views/LinhDienView';
+import { LuyenDanView } from './components/mobile/views/LuyenDanView';
+import { PhuongThiView } from './components/mobile/views/PhuongThiView';
 import { useGameStore } from './store/gameStore';
 
 export const App: React.FC = () => {
@@ -32,28 +31,25 @@ export const App: React.FC = () => {
   }, [initGame, tickGameLoop]);
 
   return (
-    <div className="w-full min-h-screen bg-[#02050a] flex items-center justify-center text-slate-100 select-none antialiased relative overflow-hidden">
+    <div className="w-full min-h-screen bg-[#03060c] flex items-center justify-center text-slate-100 select-none antialiased relative overflow-hidden">
       {/* Desktop Background Ambient Mist and Subtle Lights */}
       <div className="hidden md:block absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-600/10 rounded-full blur-3xl animate-pulse-glow" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-600/10 rounded-full blur-3xl animate-pulse-glow" />
       </div>
 
-      {/* Mobile-First Frame (max-w-md, rounded and framed on desktop) */}
-      <div className="w-full max-w-md min-h-screen md:min-h-[840px] md:max-h-[92vh] md:rounded-3xl bg-[#070d17] flex flex-col justify-between relative shadow-[0_0_60px_rgba(0,0,0,0.9)] md:border md:border-amber-500/40 overflow-hidden">
+      {/* Mobile-First Frame (max-w-[430px], rounded and framed on desktop) */}
+      <div className="w-full max-w-[430px] min-h-screen md:min-h-0 md:h-[94vh] md:max-h-[920px] md:rounded-3xl bg-[#070d17] flex flex-col justify-between relative shadow-[0_0_60px_rgba(0,0,0,0.9)] md:border md:border-amber-500/40 overflow-hidden">
         {/* Top Header */}
         <MobileHeader />
 
-        {/* 2D Scenic Atmosphere */}
-        <Scene2D />
-
-        {/* Dynamic Tab Content Area */}
-        <main className="flex-1 px-3 py-2.5 overflow-y-auto">
-          {activeTab === 'cultivation' && <CultivationTab />}
-          {activeTab === 'garden' && <GardenTab />}
-          {activeTab === 'alchemy' && <AlchemyTab />}
-          {activeTab === 'abode' && <AbodeTab />}
-          {activeTab === 'inventory' && <InventoryTab />}
+        {/* Dynamic Tab Content Area matching designs */}
+        <main className="flex-1 w-full relative overflow-y-auto overflow-x-hidden">
+          {activeTab === 'dong-phu' && <DongPhuView />}
+          {activeTab === 'tu-luyen' && <TuLuyenView />}
+          {activeTab === 'luyen-dan' && <LuyenDanView />}
+          {activeTab === 'linh-dien' && <LinhDienView />}
+          {activeTab === 'phuong-thi' && <PhuongThiView />}
         </main>
 
         {/* Fixed Bottom Navigation Bar */}
